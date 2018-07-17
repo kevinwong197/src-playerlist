@@ -1,2 +1,2 @@
 # src-playerlist
-nothing is here as of now
+a source masterserver browser written in vue
