@@ -6,11 +6,13 @@ class Serverquery
   KEY = ENV['STEAM_API_KEY']
 
   def initialize mod
-    @limit = 25
+    # @limit = 25
     @url = 'https://api.steampowered.com'
-    @route = %Q{
-      /IGameServersService/GetServerList/v1/?key=#{KEY}&filter=gamedir%5C#{mod}%5Cempty%5C1%5Cdedicated%5C1&limit=#{@limit}
-    }.strip
+    @route = '/IGameServersService/GetServerList/v1/?' + URI.encode_www_form({
+      'key' => KEY,
+      'filter' => "gamedir\\#{mod}"
+      # 'limit' => @limit
+    })
     @list = []
   end
 
@@ -24,14 +26,18 @@ class Serverquery
         data.each do |server|
           server['name'] = server['name']&.gsub("\u{0001}", '') || 'unamed'
         end
-        answer = {status: 'OK', servers: data}.to_json
+        answer = {status: 'OK', servers: data}
       else
-        answer = {status: "Error: #{resp.code} #{resp.message}"}.to_json
+        answer = {status: "Error: #{resp.code} #{resp.message}"}
       end
     end
     return answer
   rescue SocketError, Net::OpenTimeout, Net::ReadTimeout => e
-    {status: "Error: #{e.message}"}.to_json
+    {status: "Error: #{e.message}"}
+  end
+
+  def to_json
+    query.to_json
   end
 end
 

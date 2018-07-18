@@ -13,10 +13,10 @@ module Api
   end
 
   get '/servers/:game/?' do
-    Serverquery.new(params[:game]).query
+    Serverquery.new(params[:game]).to_json
   end
 
   get '/players/:server/?' do
-    Playerquery.new(params[:server]).query
+    Playerquery.new(params[:server]).to_json
   end
 end

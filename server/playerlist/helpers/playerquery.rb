@@ -11,11 +11,15 @@ class Playerquery
     @ds = UDPSocket.new
     get_challenge
     get_players
-    {status: 'OK', players: @list}.to_json
+    {status: 'OK', players: @list}
   rescue IO::EWOULDBLOCKWaitReadable => e
-    {status: 'Connection Timeout'}.to_json
+    {status: 'Server Not Responding'}
   rescue Errno::ECONNRESET => e
-    {status: 'Connection Refused'}.to_json
+    {status: 'Connection Refused'}
+  end
+
+  def to_json
+    query.to_json
   end
 
 private
