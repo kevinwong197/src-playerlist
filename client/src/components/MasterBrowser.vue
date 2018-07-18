@@ -7,10 +7,8 @@
       <master-options class="col" />
     </div>
     <div class="row">
-      <servers class="col" />
-    </div>
-    <div class="row">
-      <players class="col" />
+      <servers class="col-md-8" />
+      <players class="col-md-4" />
     </div>
   </div>
 </template>

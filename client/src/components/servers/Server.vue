@@ -6,10 +6,10 @@
       class="desktop dedi badge col-md-1">
       {{server.dedicated ? 'dedi' : 'local'}}
     </div>
-    <div class="name col-12 col-md-4">{{server.name}}</div>
-    <div class="desktop addr col-md-3">{{server.addr}}</div>
-    <div class="map col-6 col-md-2">{{server.map}}</div>
-    <div class="players col-6 col-md-1">{{server.players}}/{{server.max_players}}</div>
+    <div class="name col-12 col-md-12">{{server.name}}</div>
+    <div class="desktop addr col-md-12">{{server.addr}}</div>
+    <div class="map col-6 col-md-12">{{server.map}}</div>
+    <div class="players col-6 col-md-12">{{server.players}}/{{server.max_players}}</div>
     <a class="desktop join btn btn-info col-md-1 py-md-0" :href="steamproto(server.addr)">join</a>
   </div>
 </template>
