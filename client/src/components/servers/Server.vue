@@ -6,7 +6,7 @@
     <div class="desktopelm addr col-md-3">{{server.addr}}</div>
     <div class="map col-6 col-md-3">{{server.map}}</div>
     <div class="players col-6 col-md-1">{{server.players}}/{{server.max_players}}</div>
-    <a class="desktopelm join btn btn-info col-md-1" :href="steamproto(server.addr)">join</a>
+    <a class="desktopelm join btn btn-info col-md-1 py-md-0" :href="steamproto(server.addr)">join</a>
   </div>
 </template>
 
@@ -88,21 +88,21 @@ export default {
     display: unset;
   }
   .name, .map, .players, .addr {
-    text-align: left;
+    text-align: left;    
+  }
+  .name, .map, .players, .addr, .join {
     font-size: 0.6rem;
   }
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  .name, .map, .players, .addr {
-    text-align: left;
+  .name, .map, .players, .addr, .join {
     font-size: 0.8rem;
   }
 }
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-  .name, .map, .players, .addr {
-    text-align: left;
+  .name, .map, .players, .addr, .join {
     font-size: 1rem;
   }
 }
