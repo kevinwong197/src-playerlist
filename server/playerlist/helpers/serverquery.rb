@@ -6,12 +6,12 @@ class Serverquery
   KEY = ENV['STEAM_API_KEY']
 
   def initialize mod
-    # @limit = 25
+    @limit = 25
     @url = 'https://api.steampowered.com'
     @route = '/IGameServersService/GetServerList/v1/?' + URI.encode_www_form({
       'key' => KEY,
-      'filter' => "gamedir\\#{mod}"
-      # 'limit' => @limit
+      'filter' => "gamedir\\#{mod}",
+      'limit' => @limit
     })
     @list = []
   end
@@ -21,7 +21,7 @@ class Serverquery
     Net::HTTP.start(URI.parse(@url + @route).host, open_timeout: 1, read_timeout: 1) do |http|
       resp = http.get(@route)
       if resp.code == '200'
-        json = JSON.parse resp.body.to_s
+        json = JSON.parse resp.body.to_s #.force_encoding("UTF-8").encode("UTF-16")
         data = json['response']['servers'] || []
         data.each do |server|
           server['name'] = server['name']&.gsub("\u{0001}", '') || 'unamed'

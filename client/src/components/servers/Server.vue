@@ -2,11 +2,15 @@
   <div class="row py-3 py-md-1"
     v-bind:class="{highlighted: selected, unhighlighted: unselected}"
     v-on:click="select">
+    <div :class="{'btn-warning': !server.dedicated, 'btn-success': server.dedicated}"
+      class="desktop dedi btn disabled col-md-1 py-md-0">
+      {{server.dedicated ? 'dedi' : 'local'}}
+    </div>
     <div class="name col-12 col-md-4">{{server.name}}</div>
-    <div class="desktopelm addr col-md-3">{{server.addr}}</div>
-    <div class="map col-6 col-md-3">{{server.map}}</div>
+    <div class="desktop addr col-md-3">{{server.addr}}</div>
+    <div class="map col-6 col-md-2">{{server.map}}</div>
     <div class="players col-6 col-md-1">{{server.players}}/{{server.max_players}}</div>
-    <a class="desktopelm join btn btn-info col-md-1 py-md-0" :href="steamproto(server.addr)">join</a>
+    <a class="desktop join btn btn-info col-md-1 py-md-0" :href="steamproto(server.addr)">join</a>
   </div>
 </template>
 
@@ -52,7 +56,7 @@ export default {
   text-align: center;
   font-size: 1rem;
 }
-.desktopelm {
+.desktop {
   display: none;
 }
 .map {
@@ -84,25 +88,25 @@ export default {
 }
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) {
-  .desktopelm {
+  .desktop {
     display: unset;
   }
   .name, .map, .players, .addr {
     text-align: left;    
   }
-  .name, .map, .players, .addr, .join {
+  .name, .map, .players, .addr, .btn {
     font-size: 0.6rem;
   }
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  .name, .map, .players, .addr, .join {
+  .name, .map, .players, .addr, .btn {
     font-size: 0.8rem;
   }
 }
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-  .name, .map, .players, .addr, .join {
+  .name, .map, .players, .addr, .btn {
     font-size: 1rem;
   }
 }
