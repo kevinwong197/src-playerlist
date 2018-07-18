@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import eventBus from '@/services/eventBus.js'
+import eventBus from '@/services/eventBus'
 
 export default {
   methods: {

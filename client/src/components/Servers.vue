@@ -11,10 +11,10 @@
 </template>
 
 <script>
-import Server from '@/components/servers/Server.vue'
-import ProgressBar from '@/components/ProgressBar.vue'
-import serverQuery from '@/services/serverQuery.js'
-import eventBus from '@/services/eventBus.js'
+import Server from '@/components/servers/Server'
+import ProgressBar from '@/components/ProgressBar'
+import serverQuery from '@/services/serverQuery'
+import eventBus from '@/services/eventBus'
 
 export default {
   data () {
@@ -40,7 +40,9 @@ export default {
     eventBus.$on('updatemap', (map) => {
       this.map = map
     })
-    this.getservers('synergy')
+    eventBus.$emit('updategamelabel', 'synergy')
+    eventBus.$emit('updategame', 'synergy')
+    eventBus.$emit('getservers')
   },
   methods: {
     getservers () {

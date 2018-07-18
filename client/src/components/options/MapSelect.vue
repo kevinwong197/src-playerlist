@@ -1,12 +1,12 @@
 <template>
   <input type="text"
     class="form-control"
-    placeholder="map"
+    placeholder="Map"
     @keyup.native.enter="loadmap('ctf_2fort')">
 </template>
 
 <script>
-import eventBus from '@/services/eventBus.js'
+import eventBus from '@/services/eventBus'
 
 export default {
   methods: {

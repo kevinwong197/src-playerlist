@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import Player from '@/components/players/Player.vue'
-import Spinner from '@/components/Spinner.vue'
-import ProgressBar from '@/components/ProgressBar.vue'
-import playerQuery from '@/services/playerQuery.js'
-import eventBus from '@/services/eventBus.js'
+import Player from '@/components/players/Player'
+import Spinner from '@/components/Spinner'
+import ProgressBar from '@/components/ProgressBar'
+import playerQuery from '@/services/playerQuery'
+import eventBus from '@/services/eventBus'
 
 export default {
   data () {

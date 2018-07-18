@@ -17,7 +17,7 @@
 
 <script>
 import RefreshButton from '@/components/RefreshButton'
-import MasterOptions from '@/components/MasterOptions'
+import MasterOptions from '@/components/Options'
 import Servers from '@/components/Servers'
 import Players from '@/components/Players'
 

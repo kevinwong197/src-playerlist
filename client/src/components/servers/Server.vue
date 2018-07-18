@@ -1,7 +1,7 @@
 <template>
   <div class="row py-3 py-md-1"
-    v-bind:class="{highlighted: selected, unhighlighted: unselected()}"
-    v-on:click="select()">
+    v-bind:class="{highlighted: selected, unhighlighted: unselected}"
+    v-on:click="select">
     <div class="name col-12 col-md-5">{{server.name}}</div>
     <div class="addr col-md-3">{{server.addr}}</div>
     <div class="map col-6 col-md-3">{{server.map}}</div>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import eventBus from '@/services/eventBus.js'
+import eventBus from '@/services/eventBus'
 
 export default {
   data () {
