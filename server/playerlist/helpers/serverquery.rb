@@ -1,6 +1,7 @@
 require 'json'
 require 'net/http'
 require 'uri'
+require 'pp'
 
 class Serverquery
   KEY = ENV['STEAM_API_KEY']

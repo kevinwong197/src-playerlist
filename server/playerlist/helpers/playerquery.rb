@@ -1,5 +1,6 @@
 require 'json'
 require 'socket'
+require 'pp'
 
 class Playerquery
   def initialize ipport
