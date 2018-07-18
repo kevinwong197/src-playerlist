@@ -19,6 +19,7 @@ class Playerquery
   end
 
   def to_json
+    pp query
     query.to_json
   end
 
@@ -30,9 +31,15 @@ private
   end
 
   def get_players
-    @ds.send([-1].pack('l')+'U'+@challenge.split('A', 2)[1], 0, @ip, @port)
-    IO.select([@ds], nil, nil, 1)
-    @data, _ = @ds.recvfrom_nonblock(1024)
+    if @challenge[4] == 'A'
+      @ds.send([-1].pack('l')+'U'+@challenge.split('A', 2)[1], 0, @ip, @port)
+      IO.select([@ds], nil, nil, 1)
+      @data, _ = @ds.recvfrom_nonblock(1024)
+    else
+      warn "Unexpected packet type: #{@challenge[4]}"
+      @list = []
+      return
+    end
 
     if @data[4] == 'D'
       @data = @data.split('D', 2)[1]

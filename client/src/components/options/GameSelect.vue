@@ -6,9 +6,9 @@
     <div class="dropdown-menu">
       <div class="dropdown-header">game</div>
       <game-type name="TF2" dirname="tf"/>
-      <game-type name="CSGO" dirname="csgo"/>
       <game-type name="HL2DM" dirname="hl2mp"/>
       <game-type name="CSS" dirname="cstrike"/>
+      <game-type name="GMOD" dirname="garrysmod"/>
       <div role="separator" class="dropdown-divider"></div>
       <div class="dropdown-header">mod</div>
       <game-type name="synergy" dirname="synergy"/>

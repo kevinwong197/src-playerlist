@@ -37,6 +37,7 @@ class Serverquery
   end
 
   def to_json
+    pp query
     query.to_json
   end
 end
