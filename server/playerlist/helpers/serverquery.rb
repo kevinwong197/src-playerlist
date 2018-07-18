@@ -21,7 +21,7 @@ class Serverquery
     end
     data = json['response']['servers'] || []
     data.each do |server|
-      server['name'] = server['name'] || 'unamed'
+      server['name'] = server['name']&.gsub("\u{0001}", '') || 'unamed'
     end
     {status: 'OK', servers: data}.to_json
   rescue Net::OpenTimeout, Net::ReadTimeout => e
