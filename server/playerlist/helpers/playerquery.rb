@@ -69,8 +69,8 @@ if $0 == __FILE__
   threads = []
   10.times do
     threads << Thread.new do
-      wa = Playerquery.new ''
-      wa.query
+      q = Playerquery.new ''
+      q.query
       p wa.list
     end
   end
