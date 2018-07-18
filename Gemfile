@@ -9,3 +9,6 @@ gem "sinatra-contrib", "~> 2.0"
 
 # Added at 2018-07-17 19:04:28 -0400 by desktop-t75qs77\kevin:
 gem "rake", "~> 12.3"
+
+# Added at 2018-07-18 11:25:35 -0400 by desktop-t75qs77\kevin:
+gem "thin", "~> 1.7"
