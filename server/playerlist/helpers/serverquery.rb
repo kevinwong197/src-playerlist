@@ -11,7 +11,7 @@ class Serverquery
     @url = 'https://api.steampowered.com'
     @route = '/IGameServersService/GetServerList/v1/?' + URI.encode_www_form({
       'key' => KEY,
-      'filter' => "gamedir\\#{mod}",
+      'filter' => "gamedir\\#{mod}\\dedicated\\1\\empty\\1",
       'limit' => @limit
     })
     @list = []
