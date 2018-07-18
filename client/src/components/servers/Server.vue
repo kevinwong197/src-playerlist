@@ -2,10 +2,11 @@
   <div class="row py-3 py-md-1"
     v-bind:class="{highlighted: selected, unhighlighted: unselected}"
     v-on:click="select">
-    <div class="name col-12 col-md-5">{{server.name}}</div>
-    <div class="addr col-md-3">{{server.addr}}</div>
+    <div class="name col-12 col-md-4">{{server.name}}</div>
+    <div class="desktopelm addr col-md-3">{{server.addr}}</div>
     <div class="map col-6 col-md-3">{{server.map}}</div>
     <div class="players col-6 col-md-1">{{server.players}}/{{server.max_players}}</div>
+    <a class="desktopelm join btn btn-info col-md-1" :href="steamproto(server.addr)">join</a>
   </div>
 </template>
 
@@ -35,6 +36,9 @@ export default {
     },
     unselected () {
       return !(this.selected)
+    },
+    steamproto (addr) {
+      return 'steam://connect/' + addr
     }
   }
 }
@@ -48,7 +52,7 @@ export default {
   text-align: center;
   font-size: 1rem;
 }
-.addr {
+.desktopelm {
   display: none;
 }
 .map {
@@ -80,7 +84,7 @@ export default {
 }
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) {
-  .addr {
+  .desktopelm {
     display: unset;
   }
   .name, .map, .players, .addr {
