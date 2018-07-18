@@ -4,27 +4,33 @@
       <refresh-button class="col" />
     </div>
     <div class="row">
-      <master-options class="col" />
+      <options class="col" />
     </div>
     <div class="lists row">
-      <servers class="servers col-md-8" />
-      <players class="players col-md-4 fix" />
+      <simple-bar class="servers col-md-8">
+        <servers />
+      </simple-bar>
+      <simple-bar class="players col-md-4">
+        <players />
+      </simple-bar>
     </div>
   </div>
 </template>
 
 <script>
 import RefreshButton from '@/components/RefreshButton'
-import MasterOptions from '@/components/Options'
+import Options from '@/components/Options'
 import Servers from '@/components/Servers'
 import Players from '@/components/Players'
+import SimpleBar from '@/components/SimpleBar'
 
 export default {
   components: {
     RefreshButton,
-    MasterOptions,
+    Options,
     Servers,
-    Players
+    Players,
+    SimpleBar
   }
 }
 </script>

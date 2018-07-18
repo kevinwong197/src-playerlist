@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-2 container py-md-4"
+  <div class="container"
     v-bind:class="{'py-4': empty(), 'py-0': gotList()}">
     <div v-if="players.length > 0">
       <player v-for="(player, i) in players" v-bind:player="player" :key="i" />
@@ -72,7 +72,7 @@ export default {
 
 <style scoped>
 .container {
-  background-color: #222222;
+  background-color: #444444;
   color: #66ccff;
 }
 .row:nth-last-child(n+2) {

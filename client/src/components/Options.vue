@@ -1,5 +1,5 @@
 <template>
-  <div class="p-0 mt-2 my-0 input-group">
+  <div class="p-0 my-0 input-group">
     <game-select />
     <map-select />
   </div>

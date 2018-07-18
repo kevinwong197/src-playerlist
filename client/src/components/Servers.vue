@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-2 container py-md-4"
+  <div class="container"
     v-bind:class="{'py-4': listNotExist(), 'py-0': listExist()}">
     <div v-if="servers.length > 0">
       <server v-for="(server, i) in servers" v-bind:server="server" :key="i" />
