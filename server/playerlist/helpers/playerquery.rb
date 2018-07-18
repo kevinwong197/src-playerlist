@@ -52,7 +52,7 @@ private
           .to_a
           .map { |player|
           {
-            :name => (player[1] != '') && player[1].force_encoding('utf-8') || 'unconnected',
+            :name => (player[1] != '') && player[1].force_encoding('UTF-8').encode('UTF-8', invalid: :replace, undef: :replace) || 'unconnected',
             :score => player[2] || 'N/A',
             :time => player[3] && Time.at(player[3]).utc.strftime("%H:%M:%S") || 'N/A'
           }
