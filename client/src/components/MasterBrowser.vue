@@ -6,9 +6,9 @@
     <div class="row">
       <master-options class="col" />
     </div>
-    <div class="row">
-      <servers class="col-md-8" />
-      <players class="col-md-4" />
+    <div class="lists row">
+      <servers class="servers col-md-8" />
+      <players class="players col-md-4 fix" />
     </div>
   </div>
 </template>
@@ -30,4 +30,10 @@ export default {
 </script>
 
 <style scoped>
+@media (min-width: 768px) {
+  .servers, .players {
+    height: 80vh;
+    overflow-y: scroll;
+  }
+}
 </style>
