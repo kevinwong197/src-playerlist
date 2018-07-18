@@ -1,7 +1,7 @@
 # src-playerlist
 just an exercise of some sort
 honestly I'll probably never finish this
-
+##### [demo](http://src-playerlist.herokuapp.com)
 ## setup
 ```
 bundle --path vendor/bundle
