@@ -1,13 +1,13 @@
 <template>
   <div class="container"
     v-bind:class="{'py-4': empty(), 'py-0': gotList()}">
-    <div v-if="players.length > 0">
+    <div v-if="ok() && gotList()">
       <player v-for="(player, i) in players" v-bind:player="player" :key="i" />
     </div>
-    <div v-else-if="empty()">Empty</div>
+    <div v-else-if="ok()">Empty</div>
     <progress-bar v-else-if="loading()" />
     <spinner v-else-if="none()" />
-    <div v-else>{{status}}</div>
+    <div v-else-if="!ok()">{{status}}</div>
   </div>
 </template>
 
@@ -51,20 +51,23 @@ export default {
         }
       }, err => {
         console.log(err)
-        this.status = 'client error'
+        this.status = 'Client Error: ' + err.message
       })
     },
     gotList () {
-      return this.status === 'OK' && this.players.length > 0
+      return this.players.length > 0
     },
     empty () {
-      return this.status === 'OK' && this.players.length <= 0
+      return this.players.length <= 0
     },
     loading () {
       return this.status === 'Loading'
     },
     none () {
       return this.status === ''
+    },
+    ok () {
+      return this.status === 'OK'
     }
   }
 }
