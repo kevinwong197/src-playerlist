@@ -18,15 +18,15 @@
 <script>
 import RefreshButton from '@/components/RefreshButton'
 import MasterOptions from '@/components/MasterOptions'
-import ServerList from '@/components/Servers'
-import PlayerList from '@/components/Players'
+import Servers from '@/components/Servers'
+import Players from '@/components/Players'
 
 export default {
   components: {
     RefreshButton,
     MasterOptions,
-    ServerList,
-    PlayerList
+    Servers,
+    Players
   }
 }
 </script>
