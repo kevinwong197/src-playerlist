@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Player from '@/components/playerlist/Player.vue'
+import Player from '@/components/PlayerList/Player.vue'
 import Spinner from '@/components/Spinner.vue'
 import ProgressBar from '@/components/ProgressBar.vue'
 import playerQuery from '@/services/playerQuery.js'

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Server from '@/components/serverlist/Server.vue'
+import Server from '@/components/ServerList/Server.vue'
 import ProgressBar from '@/components/ProgressBar.vue'
 import serverQuery from '@/services/serverQuery.js'
 import eventBus from '@/services/eventBus.js'
