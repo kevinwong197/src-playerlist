@@ -1,6 +1,6 @@
 require_relative 'server/playerlist'
 
-throw "STEAM_API_KEY not defined" unless ENV['STEAM_API_KEY']
+# throw "STEAM_API_KEY not defined" unless ENV['STEAM_API_KEY']
 
 if ENV["RACK_ENV"] == 'production'
   use Rack::Static, :urls => {'/' => 'index.html'}, :root => 'client/dist'

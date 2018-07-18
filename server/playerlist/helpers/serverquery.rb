@@ -5,9 +5,8 @@ require 'uri'
 class Serverquery
   KEY = ENV['STEAM_API_KEY']
 
-  def initialize mod # gamedir: nil, appid: nil, limit: 15, map: ''
+  def initialize mod
     @url = 'https://api.steampowered.com'
-    # URI.encode_www_form({:filter => "map\\#{map}",
     @route = %Q{
       /IGameServersService/GetServerList/v1/?key=#{KEY}&filter=gamedir%5C#{mod}%5Cempty%5C1&limit=20
     }.strip
@@ -15,19 +14,23 @@ class Serverquery
   end
 
   def query
-    json = nil
+    answer = nil
     Net::HTTP.start(URI.parse(@url + @route).host, open_timeout: 1, read_timeout: 1) do |http|
-      json = JSON.parse http.get(@route).body.to_s
+      resp = http.get(@route)
+      if resp.code == '200'
+        json = JSON.parse resp.body.to_s
+        data = json['response']['servers'] || []
+        data.each do |server|
+          server['name'] = server['name']&.gsub("\u{0001}", '') || 'unamed'
+        end
+        answer = {status: 'OK', servers: data}.to_json
+      else
+        answer = {status: "Error: #{resp.code} #{resp.message}"}.to_json
+      end
     end
-    data = json['response']['servers'] || []
-    data.each do |server|
-      server['name'] = server['name']&.gsub("\u{0001}", '') || 'unamed'
-    end
-    {status: 'OK', servers: data}.to_json
-  rescue Net::OpenTimeout, Net::ReadTimeout => e
-    {status: 'Connection Timeout'}.to_json
-  rescue SocketError => e
-    {status: 'API Failure'}.to_json
+    return answer
+  rescue SocketError, Net::OpenTimeout, Net::ReadTimeout => e
+    {status: "Error: #{e.message}"}.to_json
   end
 end
 
