@@ -1,7 +1,7 @@
 <template>
   <input type="text"
     class="form-control"
-    placeholder="Map"
+    placeholder="Map Search Not Implemented Yet"
     @keyup.native.enter="loadmap('ctf_2fort')">
 </template>
 

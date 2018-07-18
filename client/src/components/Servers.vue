@@ -21,7 +21,7 @@ export default {
     return {
       servers: [],
       status: 'Loading',
-      game: 'tf',
+      game: '',
       map: ''
     }
   },
@@ -68,10 +68,10 @@ export default {
       return (this.servers.length > 0)
     },
     ok () {
-      return status === 'OK'
+      return this.status === 'OK'
     },
     loading () {
-      return status === 'Loading'
+      return this.status === 'Loading'
     }
   }
 }

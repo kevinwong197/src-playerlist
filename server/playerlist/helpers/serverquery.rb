@@ -6,9 +6,10 @@ class Serverquery
   KEY = ENV['STEAM_API_KEY']
 
   def initialize mod
+    @limit = 25
     @url = 'https://api.steampowered.com'
     @route = %Q{
-      /IGameServersService/GetServerList/v1/?key=#{KEY}&filter=gamedir%5C#{mod}%5Cempty%5C1&limit=20
+      /IGameServersService/GetServerList/v1/?key=#{KEY}&filter=gamedir%5C#{mod}%5Cempty%5C1&limit=#{@limit}
     }.strip
     @list = []
   end
