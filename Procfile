@@ -1,1 +1,1 @@
-web: bundle exec rackup config.ru -s thin -p $PORT -E production
+web: env RACK_ENV=production bundle exec thin start -s5 -p $PORT
