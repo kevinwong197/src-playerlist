@@ -47,7 +47,7 @@ class Serverquery
 end
 
 if $0 == __FILE__
-  sq = Serverquery.new 'obsidian'
+  sq = Serverquery.new ''
   sq.query
   p sq.to_json
 end

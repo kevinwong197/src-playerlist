@@ -69,7 +69,7 @@ if $0 == __FILE__
   threads = []
   10.times do
     threads << Thread.new do
-      wa = Playerquery.new '183.131.85.109:27110'
+      wa = Playerquery.new ''
       wa.query
       p wa.list
     end
