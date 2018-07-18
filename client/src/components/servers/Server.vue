@@ -2,8 +2,8 @@
   <div class="row py-3 py-md-1"
     v-bind:class="{highlighted: selected, unhighlighted: unselected}"
     v-on:click="select">
-    <div :class="{'btn-warning': !server.dedicated, 'btn-success': server.dedicated}"
-      class="desktop dedi btn disabled col-md-1 py-md-0">
+    <div :class="{'badge-warning': !server.dedicated, 'badge-success': server.dedicated}"
+      class="desktop dedi badge col-md-1">
       {{server.dedicated ? 'dedi' : 'local'}}
     </div>
     <div class="name col-12 col-md-4">{{server.name}}</div>
@@ -94,19 +94,19 @@ export default {
   .name, .map, .players, .addr {
     text-align: left;    
   }
-  .name, .map, .players, .addr, .btn {
+  .name, .map, .players, .addr, .btn, .badge {
     font-size: 0.6rem;
   }
 }
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  .name, .map, .players, .addr, .btn {
+  .name, .map, .players, .addr, .btn, .badge {
     font-size: 0.8rem;
   }
 }
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-  .name, .map, .players, .addr, .btn {
+  .name, .map, .players, .addr, .btn, .badge {
     font-size: 1rem;
   }
 }
