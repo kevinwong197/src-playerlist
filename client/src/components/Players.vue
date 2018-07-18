@@ -51,7 +51,7 @@ export default {
         }
       }, err => {
         console.log(err)
-        this.status = 'Client Error: ' + err.message
+        this.status = 'Client Error: ' + err.response.statusText
       })
     },
     gotList () {
