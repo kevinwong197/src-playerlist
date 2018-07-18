@@ -7,10 +7,10 @@
       <master-options class="col" />
     </div>
     <div class="row">
-      <server-list class="col" />
+      <servers class="col" />
     </div>
     <div class="row">
-      <player-list class="col" />
+      <players class="col" />
     </div>
   </div>
 </template>
@@ -18,8 +18,8 @@
 <script>
 import RefreshButton from '@/components/RefreshButton'
 import MasterOptions from '@/components/MasterOptions'
-import ServerList from '@/components/ServerList'
-import PlayerList from '@/components/PlayerList'
+import ServerList from '@/components/Servers'
+import PlayerList from '@/components/Players'
 
 export default {
   components: {
