@@ -1,7 +1,7 @@
 <template>
   <b-input-group class="px-0">
     <game-select slot="prepend"/>
-    <map-select />
+    <map-input />
     <config slot="append"/>
     <config-modal />
   </b-input-group>
@@ -9,14 +9,14 @@
 
 <script>
 import GameSelect from '@/components/options/GameSelect'
-import MapSelect from '@/components/options/MapSelect'
+import MapInput from '@/components/options/MapInput'
 import Config from '@/components/options/Config'
 import ConfigModal from '@/components/options/config/ConfigModal'
 
 export default {
   components: {
     GameSelect,
-    MapSelect,
+    MapInput,
     Config,
     ConfigModal
   }

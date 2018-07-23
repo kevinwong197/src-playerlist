@@ -84,11 +84,10 @@ export default {
       return this.status === 'Loading'
     },
     filteredServers () {
-      console.log('local: '+this.local)
-      console.log('empty: '+this.empty)
       return this.servers.filter(server => {
         return (this.empty && true || (server.players != 0)) &&
-          (this.local && true || server.dedicated)
+          (this.local && true || server.dedicated) &&
+          ((this.map == '') && true || server.map.includes(this.map))
       })
     }
   }

@@ -1,7 +1,8 @@
 <template>
   <b-form-input v-model="map"
     type="text"
-    placeholder="Enter Map Name"></b-form-input>
+    placeholder="Enter Map Name"
+    @input="loadmap"></b-form-input>
 </template>
 
 <script>
@@ -16,7 +17,6 @@ export default {
   methods: {
     loadmap (map) {
       eventBus.$emit('updatemap', map)
-      eventBus.$emit('getservers')
     }
   }
 }
