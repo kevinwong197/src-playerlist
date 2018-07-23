@@ -22,8 +22,7 @@ bundle exec rake server:dev
 ```
 
 ## Todo
-- refactor backend
+- a button to filter away local / empty servers
 - table / table header instead of the current card list
 - map search
-- a button to filter away local servers
-- workaround for the inconsistency between the playercount retrieved from masterserver and the actual playercount
+- use A2S info for currently visible servers as a workaround for the masterserver's playercount inconsistency
