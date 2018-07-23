@@ -5,10 +5,10 @@ require 'pp'
 class Playerlist
   def initialize ipport
     @ip, @port = ipport.split(':')
+    @ds = UDPSocket.new
   end
 
   def query
-    @ds = UDPSocket.new
     challenge_packet = get_challenge_packet
     if flag(challenge_packet) == 'A'
       players_packet = get_players_packet read_challenge challenge_packet
@@ -109,7 +109,7 @@ class Playerlist
   end
 
   def get_players_packet challenge
-    @ds.send("#{oob_header}U#{challenge}", 0, @ip, @port)
+    @ds.send(oob_header + 'U' + challenge, 0, @ip, @port)
     wait_timeout
     @ds.recvfrom_nonblock(1024).first
   end
