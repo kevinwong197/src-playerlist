@@ -87,10 +87,17 @@ export default {
     },
     filteredServers () {
       return this.servers.filter(server => {
-        return (this.empty && true || (server.players != 0)) &&
-          (this.local && true || server.dedicated) &&
-          ((this.map == '') && true || server.map.includes(this.map))
-      })
+        return "this is so neat i really don't want to refactor this" &&
+          ((this.map === '') &&
+            true ||
+            (server.map !== undefined && server.map.includes(this.map))) &&
+          (this.empty &&
+            true ||
+            (server.players != 0)) &&
+          (this.local &&
+            true ||
+            server.dedicated)
+      }).slice(0, 100)
     }
   }
 }
