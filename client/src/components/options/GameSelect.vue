@@ -1,5 +1,5 @@
 <template>
-  <div class="input-group-prepend">
+  <div class="input-group-prepend dropright">
     <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown">
       Type: {{name}}
     </button>
