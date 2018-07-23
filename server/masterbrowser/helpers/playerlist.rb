@@ -116,7 +116,7 @@ class Playerlist
 end
 
 if $0 == __FILE__
-  q = Playerlist.new '103.28.55.76:27049'
+  q = Playerlist.new ''
   pp q.query
 end
 
