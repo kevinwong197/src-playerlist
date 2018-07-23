@@ -23,5 +23,4 @@ bundle exec rake server:dev
 
 ## Todo
 - table / table header instead of the current card list
-- map search
 - use A2S info for currently visible servers as a workaround for the masterserver's playercount inconsistency
