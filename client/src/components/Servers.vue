@@ -1,10 +1,10 @@
 <template>
   <div class="container"
     v-bind:class="{'py-4': listNotExist(), 'py-0': listExist()}">
-    <div v-if="servers.length > 0">
-      <server v-for="(server, i) in servers" v-bind:server="server" :key="i" />
+    <div v-if="filteredServers().length > 0">
+      <server v-for="(server, i) in filteredServers()" v-bind:server="server" :key="i" />
     </div>
-    <div v-else-if="ok()">Empty</div>
+    <div v-else-if="ok()">No Results</div>
     <progress-bar v-else-if="loading()" />
     <div v-else>{{status}}</div>
   </div>
@@ -22,7 +22,9 @@ export default {
       servers: [],
       status: 'Loading',
       game: '',
-      map: ''
+      map: '',
+      local: false,
+      empty: false
     }
   },
   components: {
@@ -39,6 +41,14 @@ export default {
     })
     eventBus.$on('updatemap', (map) => {
       this.map = map
+    })
+    eventBus.$on('updatelocal', (b) => {
+      console.log('updated local')
+      this.local = b
+    })
+    eventBus.$on('updateempty', (b) => {
+      console.log('updated empty')
+      this.empty = b
     })
     eventBus.$emit('updategamelabel', 'synergy')
     eventBus.$emit('updategame', 'synergy')
@@ -72,6 +82,14 @@ export default {
     },
     loading () {
       return this.status === 'Loading'
+    },
+    filteredServers () {
+      console.log('local: '+this.local)
+      console.log('empty: '+this.empty)
+      return this.servers.filter(server => {
+        return (this.empty && true || (server.players != 0)) &&
+          (this.local && true || server.dedicated)
+      })
     }
   }
 }

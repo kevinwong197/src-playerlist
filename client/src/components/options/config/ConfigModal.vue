@@ -1,5 +1,5 @@
 <template>
-  <b-modal id="cfgmodal" title="Settings">
+  <b-modal id="cfgmodal" title="Settings" @ok="update">
     <div>
       <b-form-group>
         <b-form-checkbox-group stacked v-model="selected" :options="options">
@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import eventBus from '@/services/eventBus'
+
 export default {
   data () {
     return {
@@ -18,6 +20,13 @@ export default {
         {text: 'Show Empty Servers', value: 'empty'},
         {text: 'Show Local Servers', value: 'local'}
       ]
+    }
+  },
+  methods: {
+    update () {
+      this.options.forEach(item => {
+        eventBus.$emit(`update${item.value}`, this.selected.includes(item.value))
+      })
     }
   }
 }
