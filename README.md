@@ -25,3 +25,4 @@ bundle exec rake server:dev
 - table / table header instead of the current card list
 - use A2S info for currently visible servers as a workaround for the masterserver's playercount inconsistency
 - add full refresh that'd call to the api with custom filters
+- less short circuiting
