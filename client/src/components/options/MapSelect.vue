@@ -1,14 +1,18 @@
 <template>
-  <input type="text"
-    class="form-control"
-    placeholder="Map Search Not Implemented Yet"
-    @keyup.native.enter="loadmap('ctf_2fort')">
+  <b-form-input v-model="map"
+    type="text"
+    placeholder="Enter Map Name"></b-form-input>
 </template>
 
 <script>
 import eventBus from '@/services/eventBus'
 
 export default {
+  data () {
+    return {
+      map: ''
+    }
+  },
   methods: {
     loadmap (map) {
       eventBus.$emit('updatemap', map)

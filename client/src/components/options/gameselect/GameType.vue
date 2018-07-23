@@ -1,5 +1,5 @@
 <template>
-  <a class="dropdown-item" href="#" @click="loadgame">{{name}}</a>
+  <b-dd-item href="#" @click="loadgame">{{name}}</b-dd-item>
 </template>
 
 <script>
