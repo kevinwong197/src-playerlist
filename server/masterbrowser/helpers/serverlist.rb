@@ -11,7 +11,8 @@ class Serverlist
     @route = '/IGameServersService/GetServerList/v1/?' + URI.encode_www_form({
       'key' => key,
       # %5C
-      'filter' => "gamedir\\#{mod}\\dedicated\\1\\empty\\1",
+      # \\dedicated\\1\\empty\\1
+      'filter' => "gamedir\\#{mod}",
       'limit' => limit
     })
   end
