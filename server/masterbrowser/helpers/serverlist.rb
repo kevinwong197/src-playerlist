@@ -65,7 +65,7 @@ class Serverlist
 
   def fill_server_names servers
     servers.each do |server|
-      server['name'] = server['name'] || 'unamed'
+      server['name'] = server['name'] && server['name'].strip || 'unamed'
     end
   end
 
