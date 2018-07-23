@@ -5,18 +5,29 @@ require 'pp'
 class Playerlist
   def initialize ipport
     @ip, @port = ipport.split(':')
-    @list = []
   end
 
   def query
     @ds = UDPSocket.new
-    get_challenge
-    get_players
-    {status: 'OK', players: @list}
+    challenge_packet = get_challenge_packet
+    if flag(challenge_packet) == 'A'
+      players_packet = get_players_packet read_challenge challenge_packet
+      if flag(players_packet) == 'D'
+        list = read_players players_packet
+        {status: 'OK', players: list}
+      else
+        {status: "Unexpected Players Response: #{flag(challenge_packet)}"}
+      end
+    else
+      {status: "Unexpected Challenge Response: #{flag(challenge_packet)}"}
+    end
+    {status: 'OK', players: list}
   rescue IO::EWOULDBLOCKWaitReadable => e
     {status: 'Server Not Responding'}
   rescue Errno::ECONNRESET => e
     {status: 'Connection Refused'}
+  ensure
+    @ds.close
   end
 
   def to_json
@@ -24,56 +35,88 @@ class Playerlist
     query.to_json
   end
 
-private
-  def get_challenge
-    @ds.send([-1].pack('l')+'U'+[-1].pack('l'), 0, @ip, @port)
-    IO.select([@ds], nil, nil, 1)
-    @challenge, _ = @ds.recvfrom_nonblock(1024)
+  def oob_header
+    [-1].pack('l')
   end
 
-  def get_players
-    if @challenge[4] == 'A'
-      @ds.send([-1].pack('l')+'U'+@challenge.split('A', 2)[1], 0, @ip, @port)
-      IO.select([@ds], nil, nil, 1)
-      @data, _ = @ds.recvfrom_nonblock(1024)
-    else
-      warn "Unexpected packet type: #{@challenge[4]}"
-      @list = []
-      return
-    end
+  def filler
+    [-1].pack('l')
+  end
 
-    if @data[4] == 'D'
-      @data = @data.split('D', 2)[1]
-      if (players = @data.unpack('h')[0].to_i) > 0
-        @data = @data[1..-1]
-        @list = @data
-          .unpack('h Z* l e '*players)
-          .each_slice(4)
-          .to_a
-          .map { |player|
-          {
-            :name => (player[1] != '') && player[1].force_encoding('UTF-8').encode('UTF-8', invalid: :replace, undef: :replace) || 'unconnected',
-            :score => player[2] || 'N/A',
-            :time => player[3] && Time.at(player[3]).utc.strftime("%H:%M:%S") || 'N/A'
-          }
-        }
+  def timeout_config
+    1
+  end
+
+  def get_challenge_packet
+    @ds.send(oob_header + 'U' + filler, 0, @ip, @port)
+    wait_timeout
+    @ds.recvfrom_nonblock(1024).first
+  end
+
+  def wait_timeout
+    IO.select([@ds], nil, nil, timeout_config)
+  end
+
+  def read_challenge challenge_packet
+    after_flag(challenge_packet, 'A')
+  end
+
+  def after_flag packet, flag
+    packet.split(flag, 2).last
+  end
+
+  def parse_playercount players_packet
+    pp after_flag(players_packet, 'D').unpack('v')
+    after_flag(players_packet, 'D').unpack('v').first.to_i
+  end
+
+  def flag packet
+    packet[4]
+  end
+
+  def parse_players players_packet, player_count
+    after_flag(players_packet, 'D')[1..-1]
+      .unpack('h Z* l e ' * player_count)
+      .each_slice(4)
+      .to_a
+  end
+
+  def clean_utf8 txt
+    txt.encode('UTF-8', 'UTF-8', invalid: :replace, undef: :replace)
+  end
+
+  def format_time time_bytes
+    Time.at(time_bytes).utc.strftime("%H:%M:%S")
+  end
+
+  def player_hash player_bytes
+    {
+      :name => (player_bytes[1] != '') && clean_utf8(player_bytes[1]) || 'unconnected',
+      :score => player_bytes[2] && player_bytes[2].to_i || 'N/A',
+      :time => player_bytes[3] && format_time(player_bytes[3]) || 'N/A'
+    }
+  end
+
+  def read_players players_packet
+    player_count = parse_playercount players_packet
+    if player_count > 0
+      parse_players(players_packet, player_count).map do |player|
+        player_hash player
       end
     else
-      @list = []
+      []
     end
-    @ds.close
+  end
+
+  def get_players_packet challenge
+    @ds.send("#{oob_header}U#{challenge}", 0, @ip, @port)
+    wait_timeout
+    @ds.recvfrom_nonblock(1024).first
   end
 end
 
 if $0 == __FILE__
-  threads = []
-  10.times do
-    threads << Thread.new do
-      q = Playerlist.new ''
-      q.query
-      p wa.list
-    end
-  end
-  threads.each(&:join)
+  q = Playerlist.new '103.28.55.76:27049'
+  pp q.query
 end
 
