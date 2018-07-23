@@ -35,8 +35,8 @@ class Serverlist
     route + querystr
   end
 
-  def print_content_type response
-    puts "content-type: #{response['content-type']}"
+  def content_type response
+    "content-type: #{response['content-type']}"
   end
 
   def hostname
@@ -74,7 +74,6 @@ class Serverlist
   end
 
   def query
-    puts full_url
     start do |http|
       response = http.get(api_call)
       if ok?(response)
@@ -87,7 +86,6 @@ class Serverlist
   end
 
   def to_json
-    pp query
     query.to_json
   end
 end

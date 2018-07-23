@@ -31,7 +31,6 @@ class Playerlist
   end
 
   def to_json
-    pp query
     query.to_json
   end
 
@@ -66,7 +65,6 @@ class Playerlist
   end
 
   def parse_playercount players_packet
-    pp after_flag(players_packet, 'D').unpack('v')
     after_flag(players_packet, 'D').unpack('v').first.to_i
   end
 
