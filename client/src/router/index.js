@@ -7,8 +7,15 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      path: '/:gamedir/:name',
+      component: MasterBrowser
+    },
+    {
       path: '/',
-      name: 'MasterBrowser',
+      component: MasterBrowser
+    },
+    {
+      path: '/:gamedir',
       component: MasterBrowser
     }
   ]

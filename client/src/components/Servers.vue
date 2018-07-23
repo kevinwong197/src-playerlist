@@ -50,8 +50,10 @@ export default {
       console.log('updated empty')
       this.empty = b
     })
-    eventBus.$emit('updategamelabel', 'synergy')
-    eventBus.$emit('updategame', 'synergy')
+    let gamedir = this.$route.params.gamedir || 'synergy'
+    let name = this.$route.params.name || this.$route.params.gamedir || 'synergy'
+    eventBus.$emit('updategamelabel', name)
+    eventBus.$emit('updategame', gamedir)
     eventBus.$emit('getservers')
   },
   methods: {

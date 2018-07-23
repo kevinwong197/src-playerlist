@@ -1,5 +1,9 @@
 <template>
-  <b-dd-item href="#" @click="loadgame">{{name}}</b-dd-item>
+  <b-dd-item
+    href="#"
+    :to="'/' + dirname + '/' + name"
+    @click.native="loadgame">{{name}}
+  </b-dd-item>
 </template>
 
 <script>
