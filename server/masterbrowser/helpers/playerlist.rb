@@ -39,7 +39,7 @@ class Playerlist
     [-1].pack('l')
   end
 
-  def filler
+  def init_challenge
     [-1].pack('l')
   end
 
@@ -48,7 +48,7 @@ class Playerlist
   end
 
   def get_challenge_packet
-    @ds.send(oob_header + 'U' + filler, 0, @ip, @port)
+    @ds.send(oob_header + 'U' + init_challenge, 0, @ip, @port)
     wait_timeout
     @ds.recvfrom_nonblock(1024).first
   end
