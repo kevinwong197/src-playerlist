@@ -4,18 +4,16 @@ require 'uri'
 require 'pp'
 
 class Serverlist
-  KEY = ENV['STEAM_API_KEY']
-
   def initialize mod
-    @limit = 100
+    key = ENV['STEAM_API_KEY']
+    limit = 100
     @url = 'https://api.steampowered.com'
     @route = '/IGameServersService/GetServerList/v1/?' + URI.encode_www_form({
-      'key' => KEY,
+      'key' => key,
       # %5C
       'filter' => "gamedir\\#{mod}\\dedicated\\1\\empty\\1",
-      'limit' => @limit
+      'limit' => limit
     })
-    @list = []
   end
 
   def query
