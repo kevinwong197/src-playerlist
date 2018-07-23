@@ -88,8 +88,9 @@ class Playerlist
   end
 
   def player_hash player_bytes
+    player_name = clean_utf8(player_bytes[1]).strip
     {
-      :name => (player_bytes[1] != '') && clean_utf8(player_bytes[1]) || 'unconnected',
+      :name => (player_name != '') && player_name || 'unconnected',
       :score => player_bytes[2] && player_bytes[2].to_i || 'N/A',
       :time => player_bytes[3] && format_time(player_bytes[3]) || 'N/A'
     }
