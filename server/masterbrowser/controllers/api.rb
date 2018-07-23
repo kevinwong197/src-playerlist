@@ -1,7 +1,7 @@
 require 'sinatra/extension'
 
-require 'playerlist/helpers/serverquery'
-require 'playerlist/helpers/playerquery'
+require 'masterbrowser/helpers/serverlist'
+require 'masterbrowser/helpers/playerlist'
 
 module Api
   extend Sinatra::Extension
@@ -13,10 +13,10 @@ module Api
   end
 
   get '/servers/:game/?' do
-    Serverquery.new(params[:game]).to_json
+    Serverlist.new(params[:game]).to_json
   end
 
   get '/players/:server/?' do
-    Playerquery.new(params[:server]).to_json
+    Playerlist.new(params[:server]).to_json
   end
 end

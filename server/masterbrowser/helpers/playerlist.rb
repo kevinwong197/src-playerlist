@@ -2,7 +2,7 @@ require 'json'
 require 'socket'
 require 'pp'
 
-class Playerquery
+class Playerlist
   def initialize ipport
     @ip, @port = ipport.split(':')
     @list = []
@@ -69,7 +69,7 @@ if $0 == __FILE__
   threads = []
   10.times do
     threads << Thread.new do
-      q = Playerquery.new ''
+      q = Playerlist.new ''
       q.query
       p wa.list
     end

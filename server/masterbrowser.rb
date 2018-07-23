@@ -1,10 +1,11 @@
 $LOAD_PATH << File.expand_path((File.dirname(__FILE__)))
 
 require 'sinatra/base'
+require 'dotenv/load'
 
-require 'playerlist/controllers/api'
+require 'masterbrowser/controllers/api'
 
-class App < Sinatra::Base
+class MasterBrowser < Sinatra::Base
   configure :development do
     enable :logging
   end

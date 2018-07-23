@@ -8,6 +8,7 @@ GEM
       tzinfo (~> 1.1)
     backports (3.11.3)
     concurrent-ruby (1.0.5)
+    dotenv (2.5.0)
     i18n (1.0.1)
       concurrent-ruby (~> 1.0)
     minitest (5.11.3)
@@ -40,6 +41,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  dotenv (~> 2.5)
   puma (~> 3.12)
   rake (~> 12.3)
   sinatra (~> 2.0)

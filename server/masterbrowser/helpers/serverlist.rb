@@ -3,7 +3,7 @@ require 'net/http'
 require 'uri'
 require 'pp'
 
-class Serverquery
+class Serverlist
   KEY = ENV['STEAM_API_KEY']
 
   def initialize mod
@@ -47,7 +47,7 @@ class Serverquery
 end
 
 if $0 == __FILE__
-  sq = Serverquery.new ''
+  sq = Serverlist.new ''
   sq.query
   p sq.to_json
 end
