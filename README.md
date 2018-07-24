@@ -28,3 +28,4 @@ bundle exec rake server:dev
 - table / table header instead of the current card list
 - use A2S info for currently visible servers as a workaround for the masterserver's playercount inconsistency (info refresh button)
 - less short circuiting
+- custom dirname inputbox (with :to="'/' + dirname")
