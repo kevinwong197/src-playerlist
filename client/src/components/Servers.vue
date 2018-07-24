@@ -70,7 +70,7 @@ export default {
         }
       }, err => {
         console.log(err)
-        this.status = 'client error'
+        this.status = 'Client Error: ' + err.response.statusText
       })
     },
     listNotExist () {
