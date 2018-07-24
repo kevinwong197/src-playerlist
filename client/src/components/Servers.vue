@@ -50,13 +50,21 @@ export default {
       console.log('updated empty')
       this.empty = b
     })
-    let gamedir = this.$route.params.gamedir || 'synergy'
-    let name = this.$route.params.name || this.$route.params.gamedir || 'synergy'
-    eventBus.$emit('updategamelabel', name)
-    eventBus.$emit('updategame', gamedir)
-    eventBus.$emit('getservers')
+    this.init()
+  },
+  watch:{
+    $route (to, from) {
+      this.init()
+    }
   },
   methods: {
+    init () {
+      let gamedir = this.$route.params.gamedir || 'synergy'
+      let name = this.$route.params.name || this.$route.params.gamedir || 'synergy'
+      eventBus.$emit('updategamelabel', name)
+      eventBus.$emit('updategame', gamedir)
+      eventBus.$emit('getservers')
+    },
     getservers () {
       this.servers = []
       this.status = 'Loading'
