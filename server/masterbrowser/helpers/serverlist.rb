@@ -79,10 +79,11 @@ class Serverlist
       response = http.get(api_call)
       if ok?(response)
         return {status: 'OK', servers: read_servers(response.body)}
+      else
+        return {status: "Error: #{response.code} #{response.message}"}
       end
     end
-    {status: "Error: #{response.code} #{response.message}"}
-  rescue SocketError, Net::OpenTimeout, Net::ReadTimeout => e
+  rescue Exception => e # SocketError, Net::OpenTimeout, Net::ReadTimeout
     {status: "Error: #{e.message}"}
   end
 
