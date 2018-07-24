@@ -75,6 +75,7 @@ class Serverlist
   end
 
   def query
+    return {status: "Error: STEAM_API_KEY not defined"} unless ENV['STEAM_API_KEY']
     start do |http|
       response = http.get(api_call)
       if ok?(response)
