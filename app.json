@@ -1,0 +1,5 @@
+{
+  "name": "src-playerlist",
+  "description": "source engine server browser thing",
+  "keywords": ["node", "vue", "sinatra", "ruby", "source", "steam"]
+}

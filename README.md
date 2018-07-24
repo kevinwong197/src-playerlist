@@ -1,7 +1,10 @@
 # src-playerlist (WIP)
-just an exercise of some sort
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+just an exercise of some sort\
 honestly I'll probably never finish this
-##### [demo](http://src-playerlist.herokuapp.com)
+
 ## setup
 ```
 bundle --path vendor/bundle
