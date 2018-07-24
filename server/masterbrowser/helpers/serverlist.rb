@@ -81,7 +81,7 @@ class Serverlist
         return {status: 'OK', servers: read_servers(response.body)}
       end
     end
-    {status: "Error: #{resp.code} #{resp.message}"}
+    {status: "Error: #{response.code} #{response.message}"}
   rescue SocketError, Net::OpenTimeout, Net::ReadTimeout => e
     {status: "Error: #{e.message}"}
   end
