@@ -64,14 +64,14 @@ class Serverlist
     json['response']['servers'] || []
   end
 
-  def fill_server_names servers
+  def fill_unamed_servers servers
     servers.each do |server|
       server['name'] = server['name'] && server['name'].strip || 'unamed'
     end
   end
 
   def read_servers txt
-    fill_server_names json2servers JSON.parse clean_utf8 txt
+    fill_unamed_servers json2servers JSON.parse clean_utf8 txt
   end
 
   def query
