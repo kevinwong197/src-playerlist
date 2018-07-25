@@ -21,7 +21,6 @@ class Playerlist
     else
       {status: "Unexpected Challenge Response: #{flag(challenge_packet)}"}
     end
-    {status: 'OK', players: list}
   rescue IO::EWOULDBLOCKWaitReadable => e
     {status: 'Server Not Responding'}
   rescue Errno::ECONNRESET => e
