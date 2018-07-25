@@ -11,7 +11,7 @@ class MasterBrowser < Sinatra::Base
     enable :logging
     register Sinatra::Reloader
 
-    Dir.glob('**/*.rb') {|path| also_reload path}
+    also_reload '**/*.rb'
     after_reload do
       puts 'reloaded'
     end
