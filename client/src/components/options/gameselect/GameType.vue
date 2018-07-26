@@ -1,7 +1,7 @@
 <template>
   <b-dd-item
     href="#"
-    :to="'/' + dirname + '/' + name">{{name}}
+    :to="api_call()">{{name}}
   </b-dd-item>
 </template>
 
@@ -12,6 +12,11 @@ export default {
   props: [
     'name',
     'dirname'
-  ]
+  ],
+  methods: {
+    api_call () {
+      return '/' + this.dirname + '/' + this.name
+    }
+  }
 }
 </script>
