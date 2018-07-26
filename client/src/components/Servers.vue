@@ -91,18 +91,22 @@ export default {
     loading () {
       return this.status === 'Loading'
     },
+    matchMap (server) {
+      return this.map === '' ||
+        server.map !== undefined &&
+        server.map.includes(this.map)
+    },
+    matchEmpty (server) {
+      return this.empty || server.players != 0
+    },
+    matchLocal (server) {
+      return this.local || server.dedicated
+    },
     filteredServers () {
       return this.servers.filter(server => {
-        return "this is so neat i really don't want to refactor this" &&
-          ((this.map === '') &&
-            true ||
-            (server.map !== undefined && server.map.includes(this.map))) &&
-          (this.empty &&
-            true ||
-            (server.players != 0)) &&
-          (this.local &&
-            true ||
-            server.dedicated)
+        return this.matchMap(server) &&
+          this.matchEmpty(server) &&
+          this.matchLocal(server)
       }).slice(0, 100)
     }
   }
