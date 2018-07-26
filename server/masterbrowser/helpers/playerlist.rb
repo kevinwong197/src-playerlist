@@ -42,7 +42,7 @@ class Playerlist
   end
 
   def timeout_config
-    ENV['GET_PLAYERS_TIMEOUT'] || 5
+    ENV['GET_PLAYERS_TIMEOUT'].to_i || 5
   end
 
   def get_challenge_packet

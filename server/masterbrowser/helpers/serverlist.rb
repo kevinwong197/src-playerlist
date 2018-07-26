@@ -45,7 +45,7 @@ class Serverlist
   end
 
   def timeout_config
-    [open_timeout: 1, read_timeout: ENV['GET_SERVERS_TIMEOUT'] || 5]
+    [open_timeout: 1, read_timeout: ENV['GET_SERVERS_TIMEOUT'].to_i || 5]
   end
 
   def ok? response
