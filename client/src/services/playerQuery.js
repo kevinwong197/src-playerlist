@@ -1,10 +1,9 @@
 import axios from 'axios'
+import apiQuery from '@/services/apiQuery'
 
 const service = {
-  search (ipport) {
-    let searchUrl = process.env.API_URL + 'players/' + ipport
-    let config = {}
-    return axios.get(searchUrl, config)
+  search (game) {
+    return apiQuery.search(game, 'players')
   }
 }
 
