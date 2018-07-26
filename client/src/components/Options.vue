@@ -1,9 +1,6 @@
 <template>
   <b-input-group class="px-0">
     <game-select slot="prepend"/>
-    <map-input />
-    <config slot="append"/>
-    <config-modal />
   </b-input-group>
 </template>
 

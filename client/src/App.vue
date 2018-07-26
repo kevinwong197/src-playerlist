@@ -13,6 +13,7 @@ export default {
 <style>
 body {
   background-color: #111111;
+  /*padding-top: 50px;*/
 }
 #app {
   color: #c58;
@@ -26,10 +27,5 @@ body {
   font-family: rr;
   font-weight: 300;
   src: url('assets/fonts/Folks-Bold.ttf') format('truetype');
-}
-@media (min-width: 544px) {
-  #app {
-    margin-top: 2rem;
-  }
 }
 </style>
