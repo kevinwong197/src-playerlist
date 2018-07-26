@@ -2,8 +2,8 @@
   <div>
     <options-modal />
     <navbar />
-    <div class="container mb-2">
-      <div class="row mb-md-2">
+    <div class="container">
+      <div class="row">
         <servers />
   <!--       <simple-bar class="servers col-md-8">
           

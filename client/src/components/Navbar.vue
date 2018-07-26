@@ -1,9 +1,9 @@
 <template>
-  <b-navbar toggleable="md" type="dark" variant="info" sticky>  <!-- fixed="top" -->
+  <b-navbar class="text-left" toggleable="md" variant="primary" type="dark" sticky>  <!-- fixed="top" -->
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav>
-        <b-navbar-brand href="#/">MasterBrowser</b-navbar-brand>
+        <b-navbar-brand>MasterBrowser</b-navbar-brand>
         <b-nav-item-dropdown text="Source" boundary="scrollParent" left>
           <game-type name="Team Fortress 2" dirname="tf"/>
           <game-type name="Half-Life 2: Deathmatch" dirname="hl2mp"/>
@@ -28,23 +28,21 @@
           <game-type name="obsidian" dirname="obsidian"/>
           <game-type name="synergy" dirname="synergy"/>
           <game-type name="Contagion" dirname="contagion"/>
-          <game-type name="Zombie Panic! Source" dirname="zps"/>
           <game-type name="Insurgency" dirname="insurgency"/>
+          <game-type name="Zombie Panic! Source" dirname="zps"/>
           <game-type name="No More Room in Hell" dirname="nmrih"/>
           <game-type name="Fistful of Frags" dirname="fof"/>
-          <game-type name="TF2 Classic" dirname="tf2classic"/>
+          <game-type name="TF2Classic" dirname="tf2classic"/>
           <game-type name="Pirates, Vikings & Knights II" dirname="pvkii"/>
           <game-type name="Dino D-Day" dirname="dinodday"/>
           <game-type name="Codename CURE" dirname="cure"/>
-
         </b-nav-item-dropdown>
         <b-nav-item href="#" v-b-modal.options>Options</b-nav-item>
       </b-navbar-nav>
 
-      <!-- Right aligned nav items -->
       <b-navbar-nav class="ml-auto">
         <b-nav-form>
-          <b-input-group left="@">
+          <b-input-group>
             <map-input size="sm" class=""/>
             <refresh-button size="sm" slot="append">Full Refresh</refresh-button>
           </b-input-group>
