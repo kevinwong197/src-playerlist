@@ -1,7 +1,3 @@
 <template>
-  <div class="progress">
-    <div class="progress-bar progress-bar-striped progress-bar-animated"
-      role="progressbar"
-      style="width: 100%" />
-  </div>
+  <b-progress :value="100" :max="100" animated />
 </template>
