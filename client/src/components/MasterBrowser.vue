@@ -1,12 +1,12 @@
 <template>
   <div class="container mb-2">
-    <div class="row">
+    <div class="row mb-md-2">
       <refresh-button class="col" />
     </div>
-    <div class="row">
+    <div class="row mb-md-2">
       <options class="col" />
     </div>
-    <div class="lists row">
+    <div class="row mb-md-2">
       <simple-bar class="servers col-md-8">
         <servers />
       </simple-bar>
