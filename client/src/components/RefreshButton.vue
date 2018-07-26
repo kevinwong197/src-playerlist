@@ -1,5 +1,5 @@
 <template>
-  <b-button variant="primary" class="my-0" @click="search">REFRESH</b-button>
+  <b-button variant="primary" @click="search">REFRESH</b-button>
 </template>
 
 <script>
