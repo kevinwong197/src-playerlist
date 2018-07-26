@@ -1,8 +1,7 @@
 <template>
   <b-dd-item
     href="#"
-    :to="'/' + dirname + '/' + name"
-    @click.native="loadgame">{{name}}
+    :to="'/' + dirname + '/' + name">{{name}}
   </b-dd-item>
 </template>
 
@@ -13,13 +12,6 @@ export default {
   props: [
     'name',
     'dirname'
-  ],
-  methods: {
-    loadgame () {
-      eventBus.$emit('updategamelabel', this.name)
-      eventBus.$emit('updategame', this.dirname)
-      eventBus.$emit('getservers')
-    }
-  }
+  ]
 }
 </script>
