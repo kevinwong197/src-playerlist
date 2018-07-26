@@ -43,11 +43,9 @@ export default {
       this.map = map
     })
     eventBus.$on('updatelocal', (b) => {
-      console.log('updated local')
       this.local = b
     })
     eventBus.$on('updateempty', (b) => {
-      console.log('updated empty')
       this.empty = b
     })
     this.init()

@@ -2,8 +2,7 @@ import axios from 'axios'
 
 const service = {
   search (game, call) {
-    let apicall = call
-    let searchUrl = process.env.API_URL + apicall + '/' + game
+    let searchUrl = process.env.API_URL + call + '/' + game
     let config = {}
     return axios.get(searchUrl, config)
   }

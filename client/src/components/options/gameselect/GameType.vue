@@ -1,8 +1,5 @@
 <template>
-  <b-dd-item
-    href="#"
-    :to="api_call()">{{name}}
-  </b-dd-item>
+  <b-dd-item href="#" :to="api_call()">{{name}}</b-dd-item>
 </template>
 
 <script>
