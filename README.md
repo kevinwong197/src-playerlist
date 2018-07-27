@@ -1,10 +1,8 @@
 # src-playerlist
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+web based source engine server browser built with vue + sinatra
 
-just an exercise of some sort\
-honestly I'll probably never finish this\
-I call this done for now
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 ## setup
 ```
@@ -26,6 +24,7 @@ bundle exec rake server:dev
 ```
 
 ## Todo (someday)
+- refactoring
 - sorting
 - use A2S info for currently visible servers as a workaround for the masterserver's playercount inconsistency (info refresh button)
 - custom dirname inputbox (with :to="'/' + dirname")
