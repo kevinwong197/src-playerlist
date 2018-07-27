@@ -46,13 +46,8 @@
         </b-nav-item-dropdown>
         <b-nav-item href="#" v-b-modal.options>Options</b-nav-item>
       </b-navbar-nav>
-
       <b-navbar-nav class="ml-auto">
-        <b-nav-form>
-          <b-input-group>
-            <refresh-button size="sm">Refresh</refresh-button>
-          </b-input-group>
-        </b-nav-form>
+        <refresh-button class="d-block" size="sm">Refresh</refresh-button>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
