@@ -33,20 +33,16 @@ export default {
   created () {
     eventBus.$on('refreshplayers', this.getplayers)
     this.getplayers()
-    // window.scrollTo(0, this.$el.offsetTop);
   },
   mounted () {
-    let server = this.$el.parentElement.parentElement.parentElement
-    console.log(server.getBoundingClientRect())
-    console.log(server.offsetTop)
-    server.scrollIntoView({ 
+    this.parent.scrollIntoView({ 
       behavior: 'smooth'
     });
   },
-  beforeDestroy(){
+  beforeDestroy (){
     eventBus.$off('refreshplayers', this.getplayers)
   },
-  props: ['addr'],
+  props: ['addr', 'parent'],
   methods: {
     getplayers () {
       this.players = []

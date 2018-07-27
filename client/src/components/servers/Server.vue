@@ -25,6 +25,7 @@
         <players
           v-if="selected"
           :addr="server.addr"
+          :parent="$el"
           class="mt-2"/>
       </span>
     </b-card>
