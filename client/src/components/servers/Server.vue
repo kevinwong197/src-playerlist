@@ -6,9 +6,10 @@
       header-text-variant="white"
       :header-bg-variant="server.dedicated ? 'primary' : 'secondary'"
       :title="server.name">
-
       <p class="card-text mb-0 mb-md-3">
-        <b-badge variant="dark">{{server.players}}/{{server.max_players}}</b-badge>
+        <b-badge :variant="selected ? 'light' : 'dark'">
+          {{server.players}}/{{server.max_players}}
+        </b-badge>
         {{server.map}}
       </p>
       <div class="desktop" @click.stop>
