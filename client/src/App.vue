@@ -13,6 +13,9 @@ export default {
 <style>
 body {
   background-color: #e6ecf0;
+
+  /*force scrollbar visible*/
+  overflow-y: scroll;
 }
 #app {
   color: #c58;
