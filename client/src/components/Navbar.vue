@@ -1,5 +1,5 @@
 <template>
-  <b-navbar class="text-left" toggleable="md" variant="primary" type="dark" sticky>  <!-- fixed="top" -->
+  <b-navbar class="shadow text-left" toggleable="md" variant="primary" type="dark" sticky>  <!-- fixed="top" -->
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav>
@@ -67,6 +67,9 @@ export default {
 </script>
 
 <style scoped>
+.shadow {
+  box-shadow: 0 20px 60px rgba(10, 10, 10, 0.05), 0 5px 10px rgba(10, 10, 10, 0.1), 0 1px 1px rgba(10, 10, 10, 0.2);
+}
 .dropdown-menu {
   width: 100%;
 }

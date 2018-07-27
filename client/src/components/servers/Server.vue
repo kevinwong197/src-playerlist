@@ -1,5 +1,6 @@
 <template>
     <b-card
+      class="shadow"
       header-text-variant="white"
       border-variant="error"
       :header-bg-variant="server.dedicated ? 'primary' : 'secondary'"
@@ -62,6 +63,9 @@ export default {
 </script>
 
 <style scoped>
+.shadow {
+  box-shadow: 0 20px 60px rgba(10, 10, 10, 0.05), 0 5px 10px rgba(10, 10, 10, 0.1), 0 1px 1px rgba(10, 10, 10, 0.2);
+}
 .name {
   text-align: center;
   font-size: 1rem;
