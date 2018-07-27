@@ -1,9 +1,9 @@
 <template>
-  <b-navbar class="shadow text-left" toggleable="md" variant="primary" type="dark" sticky>  <!-- fixed="top" -->
+  <b-navbar class="shadow text-left" toggleable="md" variant="primary" type="dark" sticky>
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav>
-        <b-navbar-brand>MasterBrowser</b-navbar-brand>
+        <game-label />
         <b-nav-item-dropdown text="Source" boundary="scrollParent" left>
           <game-type name="Team Fortress 2" dirname="tf"/>
           <game-type name="Half-Life 2: Deathmatch" dirname="hl2mp"/>
@@ -56,12 +56,14 @@
 import MapInput from '@/components/navbar/MapInput'
 import RefreshButton from '@/components/navbar/RefreshButton'
 import GameType from '@/components/navbar/GameType'
+import GameLabel from '@/components/navbar/GameLabel'
 
 export default {
   components: {
     MapInput,
     RefreshButton,
-    GameType
+    GameType,
+    GameLabel
   }
 }
 </script>

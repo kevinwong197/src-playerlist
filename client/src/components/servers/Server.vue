@@ -23,7 +23,12 @@
       </p>
 
       <div class="desktop" slot="footer">
-        <b-btn variant="success">show players</b-btn>
+        <b-btn v-b-toggle="server.addr" size="sm">show players</b-btn>
+        <b-collapse :id="server.addr" class="mt-2">
+          <b-card>
+            asdf!
+          </b-card>
+        </b-collapse>
       </div>
     </b-card>
 </template>
@@ -82,34 +87,5 @@ export default {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-}
-@media (min-width: 544px) {
-  .name {
-    font-size: 1.2rem;
-  }
-  .map, .players {
-    font-size: 1rem;
-  }
-}
-/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
-@media (min-width: 768px) {
-  .name, .map, .players, .addr {
-    text-align: left;    
-  }
-  .name, .map, .players, .addr, .btn, .badge {
-    font-size: 0.6rem;
-  }
-}
-/* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
-  .name, .map, .players, .addr, .btn, .badge {
-    font-size: 0.8rem;
-  }
-}
-/* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
-  .name, .map, .players, .addr, .btn, .badge {
-    font-size: 1rem;
-  }
 }
 </style>
