@@ -85,7 +85,9 @@ export default {
         }
       }, err => {
         console.log(err)
-        this.status = 'Client Error: ' + err.response.statusText
+        if (this.game === game) {
+          this.status = 'Client Error: ' + err.response.statusText
+        }
       })
     },
     listNotExist () {
