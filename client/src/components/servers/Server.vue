@@ -11,7 +11,7 @@
         <b-badge variant="dark">{{server.players}}/{{server.max_players}}</b-badge>
         {{server.map}}
       </p>
-      <div class="desktop">
+      <div class="desktop" @click.stop>
         <b-btn
           class="d-block"
           :href="steamproto(server.addr)"
