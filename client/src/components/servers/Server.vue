@@ -1,33 +1,30 @@
 <template>
     <b-card
-      class="shad"
+      class="text-left"
+      @click="select"
+      :bg-variant="selected ? 'dark clicked' : null"
       header-text-variant="white"
-      border-variant="error"
       :header-bg-variant="server.dedicated ? 'primary' : 'secondary'"
       :title="server.name">
 
-      <div slot="header">
-        <b-btn
-          :href="steamproto(server.addr)"
-          :variant="server.dedicated ? 'success' : 'secondary'"
-          :class="{disabled: !server.dedicated}">
-          <small>{{server.dedicated ? '↪' : ''}} {{server.addr}}</small>
-        </b-btn>
-      </div>
+      <!-- <div slot="header" class="sharpbox">
+      </div> -->
 
-      <p class="card-text">
+
+      <p class="card-text mb-0 mb-md-3">
+        <b-badge variant="dark">{{server.players}}/{{server.max_players}}</b-badge>
         {{server.map}}
       </p>
-
-      <div slot="footer">
-        <b-btn size="sm" variant="primary" @click="select">
-          show players <b-badge variant="light">{{server.players}}/{{server.max_players}}</b-badge>
-        </b-btn>
-        <players
-          :addr="server.addr"
-          class="mt-2"
-          :class="selected ? null : 'collapse'"/>
-      </div>
+      <b-btn
+        class="desktop"
+        :href="steamproto(server.addr)"
+        :variant="server.dedicated ? 'success' : 'secondary'"
+        :class="{disabled: !server.dedicated}">
+        <small>{{server.dedicated ? '↪' : ''}} {{server.addr}}</small>
+      </b-btn>
+      <players v-if="selected"
+        :addr="server.addr"
+        class="mt-2"/>
     </b-card>
 </template>
 
@@ -73,7 +70,12 @@ export default {
 </script>
 
 <style scoped>
-.shad {
-  box-shadow: 0 20px 60px rgba(10, 10, 10, 0.05), 0 5px 10px rgba(10, 10, 10, 0.1), 0 1px 1px rgba(10, 10, 10, 0.2);
+.desktop {
+  display: none;
+}
+@media (min-width: 768px) {
+  .desktop {
+    display: unset;
+  }
 }
 </style>

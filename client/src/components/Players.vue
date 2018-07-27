@@ -6,7 +6,7 @@
     </div>
     <div v-else-if="ok()">Empty</div>
     <progress-bar v-else-if="loading()" />
-    <spinner v-else-if="none()" />
+    <spinner v-else-if="none()">{{getplayers()}}</spinner>
     <div v-else-if="!ok()">{{status}}</div>
   </div>
 </template>
@@ -72,7 +72,7 @@ export default {
 
 <style scoped>
 .container {
-  background-color: #444444;
+  /*background-color: #444444;*/
   color: #66ccff;
 }
 .row:nth-last-child(n+2) {

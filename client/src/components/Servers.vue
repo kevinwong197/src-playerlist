@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col">
           <server
-            class="my-4"
+            class="shad sharpbox clickable"
             v-for="(server, i) in filteredServers()"
             :server="server"
             :key="i" />
@@ -12,7 +12,7 @@
       </div>
     </div>
     <b-card v-else-if="ok()">No Results</b-card>
-    <progress-bar class="serversprogress" v-else-if="loading()" />
+    <progress-bar class="sharpbox" v-else-if="loading()" />
     <b-card v-else>{{status}}</b-card>
   </div>
 </template>
@@ -123,8 +123,14 @@ export default {
 </script>
 
 <style scoped>
-.serversprogress {
-  border-radius: 0;
+.sharpbox {
+  border-radius: 0 !important;
+}
+.clickable {
+  cursor: pointer;
+}
+.clickable:hover {
+  background-color: #DDDDDD;
 }
 .row:nth-last-child(n+2) {
   border-bottom-width: 1px;
@@ -135,5 +141,9 @@ export default {
   .row:nth-last-child(n+2) {
     border-bottom-width: 0.1px;
   }
+  .shad {
+    box-shadow: 0 20px 60px rgba(10, 10, 10, 0.05), 0 5px 10px rgba(10, 10, 10, 0.1), 0 1px 1px rgba(10, 10, 10, 0.2);
+  }
 }
+
 </style>
