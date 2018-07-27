@@ -123,6 +123,7 @@ export default {
       return this.local || server.dedicated
     },
     filteredServers () {
+      eventBus.$emit('deselect')
       return this.servers.filter(server => {
         return this.matchMap(server) &&
           this.matchName(server) &&

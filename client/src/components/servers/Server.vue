@@ -43,28 +43,22 @@ export default {
   },
   props: ['server'],
   created () {
-    eventBus.$on('deselect', (addr) => {
-      this.deselect(addr)
-    })
+    eventBus.$on('deselect', this.deselect)
   },
   beforeDestroy(){
-    eventBus.$off('deselect', (addr) => {
-      this.deselect(addr)
-    })
+    eventBus.$off('deselect', this.deselect)
   },
   methods: {
     select () {
       if (this.selected) {
         eventBus.$emit('refreshplayers')
       } else {
+        eventBus.$emit('deselect')
         this.selected = true
-        eventBus.$emit('deselect', this.server.addr)
       }
     },
-    deselect (addr) {
-      if (addr !== this.server.addr) {
-        this.selected = false
-      }
+    deselect () {
+      this.selected = false
     },
     unselected () {
       return !(this.selected)
