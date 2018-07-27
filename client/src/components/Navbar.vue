@@ -4,8 +4,9 @@
     <game-label />
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav>
-        <b-nav-item-dropdown text="Source" boundary="scrollParent" left>
+        <b-nav-item-dropdown text="Game" boundary="scrollParent" left>
           <div style="max-height: 50vh;overflow-y: scroll;overflow-x: hidden">
+            <b-dropdown-header>Source</b-dropdown-header>
             <game-type name="Team Fortress 2" dirname="tf"/>
             <game-type name="Half-Life 2: Deathmatch" dirname="hl2mp"/>
             <game-type name="Counter-Strike: Source" dirname="cstrike"/>
@@ -15,19 +16,15 @@
             <game-type name="Left 4 Dead 2" dirname="left4dead2"/>
             <game-type name="Day of Defeat: Source" dirname="dod"/>
             <game-type name="Alien Swarm" dirname="swarm"/>
-          </div>
-        </b-nav-item-dropdown>
-        <b-nav-item-dropdown text="Goldsrc" boundary="scrollParent" left>
-          <div style="max-height: 50vh;overflow-y: scroll;overflow-x: hidden">
+            <b-dropdown-divider />
+            <b-dropdown-header>Goldsrc</b-dropdown-header>
             <game-type name="Ricochet" dirname="ricochet"/>
             <game-type name="Team Fortress Classic" dirname="tfc"/>
             <game-type name="Deathmatch Classic" dirname="dmc"/>
             <game-type name="Sven Co-op" dirname="svencoop"/>
             <game-type name="Half-Life Deathmatch: Source" dirname="hl1mp"/>
-          </div>
-        </b-nav-item-dropdown>
-        <b-nav-item-dropdown text="SourceMod" boundary="scrollParent" left>
-          <div style="max-height: 50vh;overflow-y: scroll;overflow-x: hidden">
+            <b-dropdown-divider />
+            <b-dropdown-header>SourceMod</b-dropdown-header>
             <game-type name="Black Mesa" dirname="bms"/>
             <game-type name="gmod9" dirname="gmod9"/>
             <game-type name="obsidian" dirname="obsidian"/>
@@ -43,17 +40,17 @@
             <game-type name="Codename CURE" dirname="cure"/>
           </div>
         </b-nav-item-dropdown>
+        <b-nav-item-dropdown text="Filters" boundary="scrollParent" left>
+          <name-input />
+          <map-input />
+        </b-nav-item-dropdown>
         <b-nav-item href="#" v-b-modal.options>Options</b-nav-item>
       </b-navbar-nav>
 
       <b-navbar-nav class="ml-auto">
         <b-nav-form>
           <b-input-group>
-            <b-dropdown size="xs" text="Filters" boundary="scrollParent" right>
-              <name-input size="xs" />
-              <map-input size="xs" />
-            </b-dropdown>
-            <refresh-button size="sm" slot="append">Full Refresh</refresh-button>
+            <refresh-button size="sm">Refresh</refresh-button>
           </b-input-group>
         </b-nav-form>
       </b-navbar-nav>
