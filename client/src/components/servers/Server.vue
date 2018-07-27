@@ -9,7 +9,7 @@
       <div slot="header">
         <b-btn
           :href="steamproto(server.addr)"
-          :variant="'success'"
+          :variant="server.dedicated ? 'success' : 'secondary'"
           :class="{disabled: !server.dedicated}">
           {{server.dedicated ? 'connect' : 'local'}}
           <small>{{server.addr}}</small>
