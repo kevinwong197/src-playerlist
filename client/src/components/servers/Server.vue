@@ -2,7 +2,7 @@
     <b-card
       class="text-left nohighlight"
       @click="select"
-      :bg-variant="selected ? 'dark clicked' : null"
+      :bg-variant="selected ? 'dark' : null"
       header-text-variant="white"
       :header-bg-variant="server.dedicated ? 'primary' : 'secondary'"
       :title="server.name">
@@ -59,7 +59,6 @@ export default {
         this.selected = true
         eventBus.$emit('deselect', this.server.addr)
       }
-      console.log('clicked: '+this.server.addr)
     },
     deselect (addr) {
       if (addr === this.server.addr) {
