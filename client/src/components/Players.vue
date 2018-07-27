@@ -1,6 +1,6 @@
 <template>
   <div class="container"
-    v-bind:class="{'py-4': empty(), 'py-0': gotList()}">
+    :class="{'py-4': empty(), 'py-0': gotList()}">
     <div v-if="ok() && gotList()">
       <player v-for="(player, i) in players" v-bind:player="player" :key="i" />
     </div>
@@ -82,12 +82,7 @@ export default {
 }
 .row:nth-last-child(n+2) {
   border-bottom-width: 1px;
-  border-bottom-color: #66ccff;
-  border-bottom-style: solid;
-}
-@media (min-width: 768px) {
-  .row:nth-last-child(n+2) {
-    border-bottom-width: 0.1px;
-  }
+  border-bottom-color: orange;
+  border-bottom-style: dashed;
 }
 </style>
