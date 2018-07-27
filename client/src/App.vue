@@ -13,7 +13,6 @@ export default {
 <style>
 body {
   background-color: #e6ecf0;
-  /*padding-top: 50px;*/
 }
 #app {
   color: #c58;
