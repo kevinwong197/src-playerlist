@@ -1,5 +1,5 @@
 <template>
-  <b-modal id="options" title="Settings" @ok="update">
+  <b-modal id="options" title="Options" @ok="update">
     <div>
       <b-form-group>
         <b-form-checkbox-group stacked v-model="selected" :options="options">

@@ -1,8 +1,8 @@
 <template>
   <b-form-input v-model="map"
     type="text"
-    placeholder="Map Name"
-    @input="loadmap"></b-form-input>
+    placeholder="Server Name"
+    @input="loadname"></b-form-input>
 </template>
 
 <script>
@@ -11,12 +11,12 @@ import eventBus from '@/services/eventBus'
 export default {
   data () {
     return {
-      map: ''
+      name: ''
     }
   },
   methods: {
-    loadmap (map) {
-      eventBus.$emit('updatemap', map)
+    loadname (name) {
+      eventBus.$emit('updatename', name)
     }
   }
 }
