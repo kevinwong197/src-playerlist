@@ -21,10 +21,12 @@
           <small>{{server.dedicated ? '↪' : ''}} {{server.addr}}</small>
         </b-btn>
       </div>
-      <players
-        v-if="selected"
-        :addr="server.addr"
-        class="mt-2"/>
+      <span @click.stop>
+        <players
+          v-if="selected"
+          :addr="server.addr"
+          class="mt-2"/>
+      </span>
     </b-card>
 </template>
 
