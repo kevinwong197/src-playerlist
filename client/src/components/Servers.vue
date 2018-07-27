@@ -30,6 +30,7 @@ export default {
       status: 'Loading',
       game: '',
       map: '',
+      name: '',
       local: false,
       empty: false
     }
@@ -47,6 +48,9 @@ export default {
     })
     eventBus.$on('updatemap', (map) => {
       this.map = map
+    })
+    eventBus.$on('updatename', (name) => {
+      this.name = name
     })
     eventBus.$on('updatelocal', (b) => {
       this.local = b
@@ -107,6 +111,11 @@ export default {
         server.map !== undefined &&
         server.map.includes(this.map)
     },
+    matchName (server) {
+      return this.name === '' ||
+        server.name !== undefined &&
+        server.name.includes(this.name)
+    },
     matchEmpty (server) {
       return this.empty || server.players != 0
     },
@@ -116,6 +125,7 @@ export default {
     filteredServers () {
       return this.servers.filter(server => {
         return this.matchMap(server) &&
+          this.matchName(server) &&
           this.matchEmpty(server) &&
           this.matchLocal(server)
       }).slice(0, 50)

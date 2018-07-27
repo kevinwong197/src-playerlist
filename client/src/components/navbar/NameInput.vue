@@ -1,5 +1,5 @@
 <template>
-  <b-form-input v-model="map"
+  <b-form-input v-model="name"
     type="text"
     placeholder="Server Name"
     @input="loadname"></b-form-input>
