@@ -72,13 +72,16 @@ export default {
     getservers () {
       this.servers = []
       this.status = 'Loading'
+      let game = this.game
       serverQuery.search(this.game).then(response => {
         console.log(response.data)
-        this.status = response.data.status
-        if (this.status === 'OK') {
-          this.servers = response.data.servers
-        } else {
+        if (this.game === game) {
           this.status = response.data.status
+          if (this.status === 'OK') {
+            this.servers = response.data.servers
+          } else {
+            this.status = response.data.status
+          }
         }
       }, err => {
         console.log(err)
