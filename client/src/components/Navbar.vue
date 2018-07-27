@@ -54,7 +54,7 @@
               <name-input size="sm" />
               <map-input size="sm" />
             </b-dropdown>
-            <refresh-button size="sm" slot="append">Full Refresh</refresh-button>
+            <refresh-button size="sm" slot="append">Refresh</refresh-button>
           </b-input-group>
         </b-nav-form>
       </b-navbar-nav>
