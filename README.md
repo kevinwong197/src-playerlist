@@ -27,6 +27,5 @@ bundle exec rake server:dev
 
 ## Todo (someday)
 - sorting
-- regex support for search
 - use A2S info for currently visible servers as a workaround for the masterserver's playercount inconsistency (info refresh button)
 - custom dirname inputbox (with :to="'/' + dirname")
