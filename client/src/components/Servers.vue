@@ -124,7 +124,7 @@ export default {
 
 <style scoped>
 .sharpbox {
-  border-radius: 0 !important;
+  border-radius: 0;
 }
 .clickable {
   cursor: pointer;
@@ -132,15 +132,7 @@ export default {
 .clickable:hover {
   background-color: #DDDDDD;
 }
-.row:nth-last-child(n+2) {
-  border-bottom-width: 1px;
-  border-bottom-color: #66ccff;
-  border-bottom-style: solid;
-}
 @media (min-width: 768px) {
-  .row:nth-last-child(n+2) {
-    border-bottom-width: 0.1px;
-  }
   .shad {
     box-shadow: 0 20px 60px rgba(10, 10, 10, 0.05), 0 5px 10px rgba(10, 10, 10, 0.1), 0 1px 1px rgba(10, 10, 10, 0.2);
   }

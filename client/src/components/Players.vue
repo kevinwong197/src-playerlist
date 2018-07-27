@@ -6,7 +6,7 @@
     </div>
     <div v-else-if="ok()">Empty</div>
     <progress-bar v-else-if="loading()" />
-    <spinner v-else-if="none()">{{getplayers()}}</spinner>
+    <spinner v-else-if="none()" />
     <div v-else-if="!ok()">{{status}}</div>
   </div>
 </template>
@@ -31,9 +31,10 @@ export default {
     Spinner
   },
   mounted () {
-    eventBus.$on('getplayers-'+this.addr, () => {
-      this.getplayers()
-    })
+    eventBus.$on('getplayers-'+this.addr, this.getplayers)
+  },
+  beforeDestroy(){
+    eventBus.$off('getplayers-'+this.addr, this.getplayers)
   },
   props: ['addr'],
   methods: {
@@ -72,7 +73,6 @@ export default {
 
 <style scoped>
 .container {
-  /*background-color: #444444;*/
   color: #66ccff;
 }
 .row:nth-last-child(n+2) {

@@ -7,10 +7,6 @@
       :header-bg-variant="server.dedicated ? 'primary' : 'secondary'"
       :title="server.name">
 
-      <!-- <div slot="header" class="sharpbox">
-      </div> -->
-
-
       <p class="card-text mb-0 mb-md-3">
         <b-badge variant="dark">{{server.players}}/{{server.max_players}}</b-badge>
         {{server.map}}
@@ -22,7 +18,8 @@
         :class="{disabled: !server.dedicated}">
         <small>{{server.dedicated ? '↪' : ''}} {{server.addr}}</small>
       </b-btn>
-      <players v-if="selected"
+      <players
+        :class="selected ? null : 'd-none'"
         :addr="server.addr"
         class="mt-2"/>
     </b-card>
@@ -44,11 +41,17 @@ export default {
       this.deselect(addr)
     })
   },
+  beforeDestroy(){
+    eventBus.$off('deselect', (addr) => {
+      this.deselect(addr)
+    })
+  },
   methods: {
     select () {
       this.selected = true
       eventBus.$emit('deselect', this.server.addr)
       eventBus.$emit('getplayers-'+this.server.addr)
+      console.log('getplayers-'+this.server.addr)
     },
     deselect (addr) {
       if (addr === this.server.addr) {
