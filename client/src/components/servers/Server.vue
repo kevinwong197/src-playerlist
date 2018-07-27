@@ -11,15 +11,17 @@
         <b-badge variant="dark">{{server.players}}/{{server.max_players}}</b-badge>
         {{server.map}}
       </p>
-      <b-btn
-        class="desktop"
-        :href="steamproto(server.addr)"
-        :variant="server.dedicated ? 'success' : 'secondary'"
-        :class="{disabled: !server.dedicated}">
-        <small>{{server.dedicated ? '↪' : ''}} {{server.addr}}</small>
-      </b-btn>
+      <div class="desktop">
+        <b-btn
+          class="d-block"
+          :href="steamproto(server.addr)"
+          :variant="server.dedicated ? 'success' : 'secondary'"
+          :class="{disabled: !server.dedicated}">
+          <small>{{server.dedicated ? '↪' : ''}} {{server.addr}}</small>
+        </b-btn>
+      </div>
       <players
-        :class="selected ? null : 'd-none'"
+        v-if="selected"
         :addr="server.addr"
         class="mt-2"/>
     </b-card>
@@ -36,7 +38,7 @@ export default {
     }
   },
   props: ['server'],
-  mounted () {
+  created () {
     eventBus.$on('deselect', (addr) => {
       this.deselect(addr)
     })
@@ -48,10 +50,13 @@ export default {
   },
   methods: {
     select () {
-      this.selected = true
-      eventBus.$emit('deselect', this.server.addr)
-      eventBus.$emit('getplayers-'+this.server.addr)
-      console.log('getplayers-'+this.server.addr)
+      if (this.selected) {
+        eventBus.$emit('refreshplayers')
+      } else {
+        this.selected = true
+        eventBus.$emit('deselect', this.server.addr)
+      }
+      console.log('clicked: '+this.server.addr)
     },
     deselect (addr) {
       if (addr === this.server.addr) {

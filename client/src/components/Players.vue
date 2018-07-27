@@ -1,12 +1,12 @@
 <template>
-  <div class="container"
+  <div class="container text-center"
     :class="{'py-4': empty(), 'py-0': gotList()}">
     <div v-if="ok() && gotList()">
       <player v-for="(player, i) in players" :player="player" :key="i" />
     </div>
     <div v-else-if="ok()">Empty</div>
     <progress-bar v-else-if="loading()" />
-    <spinner v-else-if="none()" />
+    <spinner v-else-if="none()">{{getplayers()}}</spinner>
     <div v-else-if="!ok()">{{status}}</div>
   </div>
 </template>
@@ -30,11 +30,12 @@ export default {
     ProgressBar,
     Spinner
   },
-  mounted () {
-    eventBus.$on('getplayers-'+this.addr, this.getplayers)
+  created () {
+    eventBus.$on('refreshplayers', this.getplayers)
+    this.getplayers()
   },
   beforeDestroy(){
-    eventBus.$off('getplayers-'+this.addr, this.getplayers)
+    eventBus.$off('refreshplayers', this.getplayers)
   },
   props: ['addr'],
   methods: {

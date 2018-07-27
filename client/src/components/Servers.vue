@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col">
           <server
-            class="shad sharpbox clickable"
+            class="shad sharpbox clickable my-md-2"
             v-for="(server, i) in filteredServers()"
             :server="server"
             :key="i" />
@@ -139,5 +139,4 @@ export default {
     box-shadow: 0 20px 60px rgba(10, 10, 10, 0.05), 0 5px 10px rgba(10, 10, 10, 0.1), 0 1px 1px rgba(10, 10, 10, 0.2);
   }
 }
-
 </style>
