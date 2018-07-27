@@ -1,9 +1,6 @@
 <template>
-  <div class="container"
-    v-bind:class="{'py-4': listNotExist(), 'py-0': listExist()}">
-    <div v-if="filteredServers().length > 0">
-      <server v-for="(server, i) in filteredServers()" v-bind:server="server" :key="i" />
-    </div>
+  <div class="serverlist">
+    <server class="mt-4" v-if="filteredServers().length > 0" v-for="(server, i) in filteredServers()" v-bind:server="server" :key="i" />
     <div v-else-if="ok()">No Results</div>
     <progress-bar v-else-if="loading()" />
     <div v-else>{{status}}</div>
@@ -114,10 +111,10 @@ export default {
 </script>
 
 <style scoped>
-.container {
+/*.serverlist {
   background-color: #222222;
   color: #66ccff;
-}
+}*/
 .row:nth-last-child(n+2) {
   border-bottom-width: 1px;
   border-bottom-color: #66ccff;

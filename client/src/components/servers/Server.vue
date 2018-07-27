@@ -1,17 +1,27 @@
 <template>
-  <div class="row py-3 py-md-1"
-    v-bind:class="{highlighted: selected, unhighlighted: unselected}"
-    v-on:click="select">
-    <div :class="{'badge-warning': !server.dedicated, 'badge-success': server.dedicated}"
-      class="desktop dedi badge col-md-1">
-      {{server.dedicated ? 'dedi' : 'local'}}
-    </div>
-    <div class="name col-12 col-md-12">{{server.name}}</div>
-    <div class="desktop addr col-md-12">{{server.addr}}</div>
-    <div class="map col-6 col-md-12">{{server.map}}</div>
-    <div class="players col-6 col-md-12">{{server.players}}/{{server.max_players}}</div>
-    <a class="desktop join btn btn-info col-md-1 py-md-0" :href="steamproto(server.addr)">join</a>
-  </div>
+    <b-card
+      header-text-variant="white"
+      border-variant="error"
+      :header-bg-variant="server.dedicated ? 'primary' : 'secondary'"
+      
+      class="servercard"
+      :title="server.name"
+      :class="{highlighted: selected, unhighlighted: unselected}"
+      @click="select">
+
+      <div slot="header">
+        <small>{{server.addr}}</small>
+      </div>
+
+      <p class="card-text">
+        {{server.map}}
+      </p>
+
+      <b-btn class="desktop" slot="footer" :href="steamproto(server.addr)">
+        {{server.dedicated ? 'connect' : 'local'}}
+        <b-badge variant="light">{{server.players}}/{{server.max_players}}</b-badge>
+      </b-btn>
+    </b-card>
 </template>
 
 <script>
@@ -49,15 +59,15 @@ export default {
 </script>
 
 <style scoped>
-.row {
+.desktop {
+  display: none;
+}
+.servercard {
   cursor: pointer;
 }
 .name {
   text-align: center;
   font-size: 1rem;
-}
-.desktop {
-  display: none;
 }
 .map {
   text-align: left;

@@ -5,12 +5,6 @@
     <div class="container">
       <div class="row">
         <servers />
-  <!--       <simple-bar class="servers col-md-8">
-          
-        </simple-bar>
-        <simple-bar class="players col-md-4">
-          <players />
-        </simple-bar> -->
       </div>
     </div>
   </div>
