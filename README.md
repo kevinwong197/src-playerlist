@@ -3,7 +3,8 @@
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
 just an exercise of some sort\
-honestly I'll probably never finish this
+honestly I'll probably never finish this\
+I call this done for now
 
 ## setup
 ```

@@ -23,10 +23,10 @@
         <b-btn size="sm" variant="primary" @click="select">
           show players <b-badge variant="light">{{server.players}}/{{server.max_players}}</b-badge>
         </b-btn>
-        <b-collapse :id="server.addr" v-model="selected" class="mt-2">
-          <players :addr="server.addr" />
-        </b-collapse>
-        
+        <players
+          :addr="server.addr"
+          class="mt-2"
+          :class="selected ? null : 'collapse'"/>
       </div>
     </b-card>
 </template>
@@ -51,7 +51,7 @@ export default {
     select () {
       this.selected = true
       eventBus.$emit('deselect', this.server.addr)
-      eventBus.$emit('getplayers', this.server.addr)
+      eventBus.$emit('getplayers-'+this.server.addr)
     },
     deselect (addr) {
       if (addr === this.server.addr) {
@@ -75,22 +75,5 @@ export default {
 <style scoped>
 .shadow {
   box-shadow: 0 20px 60px rgba(10, 10, 10, 0.05), 0 5px 10px rgba(10, 10, 10, 0.1), 0 1px 1px rgba(10, 10, 10, 0.2);
-}
-.name {
-  text-align: center;
-  font-size: 1rem;
-}
-.map {
-  text-align: left;
-  font-size: 0.8rem;
-}
-.players {
-  text-align: right;
-  font-size: 0.8rem;
-}
-.name, .map {
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
 }
 </style>

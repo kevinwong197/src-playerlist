@@ -2,11 +2,11 @@
   <div class="container"
     :class="{'py-4': empty(), 'py-0': gotList()}">
     <div v-if="ok() && gotList()">
-      <player v-for="(player, i) in players" v-bind:player="player" :key="i" />
+      <player v-for="(player, i) in players" :player="player" :key="i" />
     </div>
     <div v-else-if="ok()">Empty</div>
     <progress-bar v-else-if="loading()" />
-    <div v-else-if="none()">wat</div>
+    <spinner v-else-if="none()" />
     <div v-else-if="!ok()">{{status}}</div>
   </div>
 </template>
@@ -27,25 +27,20 @@ export default {
   },
   components: {
     Player,
-    ProgressBar
+    ProgressBar,
+    Spinner
   },
   mounted () {
-    eventBus.$on('getplayers', (addr) => {
-      if (addr === this.addr) {
-        this.getplayers(this.addr)
-      }
-    })
-    eventBus.$on('resetplayers', () => {
-      this.players = []
-      this.status = ''
+    eventBus.$on('getplayers-'+this.addr, () => {
+      this.getplayers()
     })
   },
   props: ['addr'],
   methods: {
-    getplayers (ipport) {
+    getplayers () {
       this.players = []
       this.status = 'Loading'
-      playerQuery.search(ipport).then(response => {
+      playerQuery.search(this.addr).then(response => {
         console.log(response.data)
         this.status = response.data.status
         if (this.status === 'OK') {

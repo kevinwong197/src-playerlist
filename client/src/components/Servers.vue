@@ -40,7 +40,6 @@ export default {
   },
   mounted () {
     eventBus.$on('getservers', () => {
-      eventBus.$emit('resetplayers')
       this.getservers()
     })
     eventBus.$on('updategame', (game) => {
@@ -121,10 +120,6 @@ export default {
 </script>
 
 <style scoped>
-/*.serverlist {
-  background-color: #222222;
-  color: #66ccff;
-}*/
 .serversprogress {
   border-radius: 0;
 }
