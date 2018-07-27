@@ -21,7 +21,7 @@
 
       <div slot="footer">
         <b-btn size="sm" variant="primary" @click="select">
-          players <b-badge variant="light">{{server.players}}/{{server.max_players}}</b-badge>
+          show players <b-badge variant="light">{{server.players}}/{{server.max_players}}</b-badge>
         </b-btn>
         <b-collapse :id="server.addr" v-model="selected" class="mt-2">
           <players :addr="server.addr" />
