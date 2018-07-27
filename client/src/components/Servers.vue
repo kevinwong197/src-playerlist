@@ -1,9 +1,19 @@
 <template>
   <div class="serverlist">
-    <server class="my-4" v-if="filteredServers().length > 0" v-for="(server, i) in filteredServers()" v-bind:server="server" :key="i" />
-    <div v-else-if="ok()">No Results</div>
+    <div class="container" v-if="filteredServers().length > 0">
+      <div class="row">
+        <div class="col">
+          <server
+            class="my-4"
+            v-for="(server, i) in filteredServers()"
+            :server="server"
+            :key="i" />
+        </div>
+      </div>
+    </div>
+    <b-card v-else-if="ok()">No Results</b-card>
     <progress-bar v-else-if="loading()" />
-    <div v-else>{{status}}</div>
+    <b-card v-else>{{status}}</b-card>
   </div>
 </template>
 

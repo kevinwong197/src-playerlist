@@ -2,11 +2,7 @@
   <div>
     <options-modal />
     <navbar />
-    <div class="container">
-      <div class="row">
-        <servers class="col" />
-      </div>
-    </div>
+    <servers />
   </div>
 </template>
 

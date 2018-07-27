@@ -12,8 +12,7 @@
           :href="steamproto(server.addr)"
           :variant="server.dedicated ? 'success' : 'secondary'"
           :class="{disabled: !server.dedicated}">
-          {{server.dedicated ? 'connect' : 'local'}}
-          <small>{{server.addr}}</small>
+          <small>↪ {{server.addr}}</small>
           <b-badge variant="light">{{server.players}}/{{server.max_players}}</b-badge>
         </b-btn>
       </div>
@@ -23,7 +22,7 @@
       </p>
 
       <div class="desktop" slot="footer">
-        <b-btn v-b-toggle="server.addr" size="sm">show players</b-btn>
+        <b-btn v-b-toggle="server.addr" size="sm" variant="primary">show players</b-btn>
         <b-collapse :id="server.addr" class="mt-2">
           <b-card>
             asdf!
