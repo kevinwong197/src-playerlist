@@ -104,7 +104,7 @@ export default {
         return this.matchMap(server) &&
           this.matchEmpty(server) &&
           this.matchLocal(server)
-      }).slice(0, 100)
+      }).slice(0, 20)
     }
   }
 }
