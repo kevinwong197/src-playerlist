@@ -6,7 +6,7 @@
     </div>
     <div v-else-if="ok()">Empty</div>
     <progress-bar v-else-if="loading()" />
-    <spinner v-else-if="none()" />
+    <div v-else-if="none()">wat</div>
     <div v-else-if="!ok()">{{status}}</div>
   </div>
 </template>
@@ -27,18 +27,20 @@ export default {
   },
   components: {
     Player,
-    Spinner,
     ProgressBar
   },
   mounted () {
-    eventBus.$on('getplayers', ipport => {
-      this.getplayers(ipport)
+    eventBus.$on('getplayers', (addr) => {
+      if (addr === this.addr) {
+        this.getplayers(this.addr)
+      }
     })
     eventBus.$on('resetplayers', () => {
       this.players = []
       this.status = ''
     })
   },
+  props: ['addr'],
   methods: {
     getplayers (ipport) {
       this.players = []

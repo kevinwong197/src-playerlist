@@ -12,7 +12,7 @@
       </div>
     </div>
     <b-card v-else-if="ok()">No Results</b-card>
-    <progress-bar v-else-if="loading()" />
+    <progress-bar class="serversprogress" v-else-if="loading()" />
     <b-card v-else>{{status}}</b-card>
   </div>
 </template>
@@ -125,6 +125,9 @@ export default {
   background-color: #222222;
   color: #66ccff;
 }*/
+.serversprogress {
+  border-radius: 0;
+}
 .row:nth-last-child(n+2) {
   border-bottom-width: 1px;
   border-bottom-color: #66ccff;

@@ -4,16 +4,14 @@
       header-text-variant="white"
       border-variant="error"
       :header-bg-variant="server.dedicated ? 'primary' : 'secondary'"
-      :title="server.name"
-      @click="select">
+      :title="server.name">
 
       <div slot="header">
         <b-btn
           :href="steamproto(server.addr)"
           :variant="server.dedicated ? 'success' : 'secondary'"
           :class="{disabled: !server.dedicated}">
-          <small>↪ {{server.addr}}</small>
-          <b-badge variant="light">{{server.players}}/{{server.max_players}}</b-badge>
+          <small>{{server.dedicated ? '↪' : ''}} {{server.addr}}</small>
         </b-btn>
       </div>
 
@@ -21,19 +19,21 @@
         {{server.map}}
       </p>
 
-      <div class="desktop" slot="footer">
-        <b-btn v-b-toggle="server.addr" size="sm" variant="primary">show players</b-btn>
-        <b-collapse :id="server.addr" class="mt-2">
-          <b-card>
-            asdf!
-          </b-card>
+      <div slot="footer">
+        <b-btn size="sm" variant="primary" @click="select">
+          players <b-badge variant="light">{{server.players}}/{{server.max_players}}</b-badge>
+        </b-btn>
+        <b-collapse :id="server.addr" v-model="selected" class="mt-2">
+          <players :addr="server.addr" />
         </b-collapse>
+        
       </div>
     </b-card>
 </template>
 
 <script>
 import eventBus from '@/services/eventBus'
+import Players from '@/components/Players'
 
 export default {
   data () {
@@ -43,17 +43,20 @@ export default {
   },
   props: ['server'],
   mounted () {
-    eventBus.$on('deselect', () => {
-      this.deselect()
+    eventBus.$on('deselect', (addr) => {
+      this.deselect(addr)
     })
   },
   methods: {
     select () {
-      eventBus.$emit('getplayers', this.server.addr)
-      eventBus.$emit('deselect')
       this.selected = true
+      eventBus.$emit('deselect', this.server.addr)
+      eventBus.$emit('getplayers', this.server.addr)
     },
-    deselect () {
+    deselect (addr) {
+      if (addr === this.server.addr) {
+        return
+      }
       this.selected = false
     },
     unselected () {
@@ -62,6 +65,9 @@ export default {
     steamproto (addr) {
       return 'steam://connect/' + addr
     }
+  },
+  components: {
+    Players
   }
 }
 </script>

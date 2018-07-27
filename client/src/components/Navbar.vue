@@ -1,9 +1,9 @@
 <template>
   <b-navbar class="shadow text-left" toggleable="md" variant="primary" type="dark" sticky>
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
+    <game-label />
     <b-collapse is-nav id="nav_collapse">
       <b-navbar-nav>
-        <game-label />
         <b-nav-item-dropdown text="Source" boundary="scrollParent" left>
           <game-type name="Team Fortress 2" dirname="tf"/>
           <game-type name="Half-Life 2: Deathmatch" dirname="hl2mp"/>

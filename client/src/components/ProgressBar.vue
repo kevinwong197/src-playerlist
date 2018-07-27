@@ -3,7 +3,4 @@
 </template>
 
 <style scoped>
-.progress {
-  border-radius: 0;
-}
 </style>

@@ -28,10 +28,4 @@ export default {
 </script>
 
 <style scoped>
-@media (min-width: 768px) {
-  .servers, .players {
-    height: 80vh;
-    overflow-y: scroll;
-  }
-}
 </style>
