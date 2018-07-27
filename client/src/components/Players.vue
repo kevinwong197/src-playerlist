@@ -33,6 +33,15 @@ export default {
   created () {
     eventBus.$on('refreshplayers', this.getplayers)
     this.getplayers()
+    // window.scrollTo(0, this.$el.offsetTop);
+  },
+  mounted () {
+    let server = this.$el.parentElement.parentElement.parentElement
+    console.log(server.getBoundingClientRect())
+    console.log(server.offsetTop)
+    server.scrollIntoView({ 
+      behavior: 'smooth'
+    });
   },
   beforeDestroy(){
     eventBus.$off('refreshplayers', this.getplayers)
