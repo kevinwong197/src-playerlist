@@ -49,12 +49,11 @@
       <b-navbar-nav class="ml-auto">
         <b-nav-form>
           <b-input-group>
-            <b-dropdown class="dropinput"
-              size="sm" text="Filters" boundary="scrollParent" right>
-              <name-input size="sm" />
-              <map-input size="sm" />
+            <b-dropdown size="xs" text="Filters" boundary="scrollParent" right>
+              <name-input size="xs" />
+              <map-input size="xs" />
             </b-dropdown>
-            <refresh-button size="sm" slot="append">Refresh</refresh-button>
+            <refresh-button size="sm" slot="append">Full Refresh</refresh-button>
           </b-input-group>
         </b-nav-form>
       </b-navbar-nav>
@@ -81,7 +80,4 @@ export default {
 </script>
 
 <style scoped>
-.dropinput {
-  overflow-x: hidden;
-}
 </style>
