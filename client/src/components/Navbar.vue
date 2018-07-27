@@ -49,7 +49,8 @@
       <b-navbar-nav class="ml-auto">
         <b-nav-form>
           <b-input-group>
-            <b-dropdown size="sm" text="Filters" boundary="scrollParent" right>
+            <b-dropdown class="dropinput"
+              size="sm" text="Filters" boundary="scrollParent" right>
               <name-input size="sm" />
               <map-input size="sm" />
             </b-dropdown>
@@ -80,4 +81,7 @@ export default {
 </script>
 
 <style scoped>
+.dropinput {
+  overflow-x: hidden;
+}
 </style>

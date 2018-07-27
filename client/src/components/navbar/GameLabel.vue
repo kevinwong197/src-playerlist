@@ -1,5 +1,8 @@
 <template>
-  <b-navbar-brand>MasterBrowser: {{name}}</b-navbar-brand>
+  <b-navbar-brand>
+    <span class="desktop">MasterBrowser: </span>
+    {{name}}
+  </b-navbar-brand>
 </template>
 
 <script>
@@ -18,3 +21,14 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.desktop {
+  display: none;
+}
+@media (min-width: 768px) {
+  .desktop {
+    display: unset;
+  }
+}
+</style>
