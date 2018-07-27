@@ -3,24 +3,27 @@
       header-text-variant="white"
       border-variant="error"
       :header-bg-variant="server.dedicated ? 'primary' : 'secondary'"
-      
-      class="servercard"
       :title="server.name"
-      :class="{highlighted: selected, unhighlighted: unselected}"
       @click="select">
 
       <div slot="header">
-        <small>{{server.addr}}</small>
+        <b-btn
+          :href="steamproto(server.addr)"
+          :variant="'success'"
+          :class="{disabled: !server.dedicated}">
+          {{server.dedicated ? 'connect' : 'local'}}
+          <small>{{server.addr}}</small>
+          <b-badge variant="light">{{server.players}}/{{server.max_players}}</b-badge>
+        </b-btn>
       </div>
 
       <p class="card-text">
         {{server.map}}
       </p>
 
-      <b-btn class="desktop" slot="footer" :href="steamproto(server.addr)">
-        {{server.dedicated ? 'connect' : 'local'}}
-        <b-badge variant="light">{{server.players}}/{{server.max_players}}</b-badge>
-      </b-btn>
+      <div class="desktop" slot="footer">
+        <b-btn variant="success">show players</b-btn>
+      </div>
     </b-card>
 </template>
 
@@ -59,12 +62,6 @@ export default {
 </script>
 
 <style scoped>
-.desktop {
-  display: none;
-}
-.servercard {
-  cursor: pointer;
-}
 .name {
   text-align: center;
   font-size: 1rem;
@@ -82,12 +79,6 @@ export default {
   overflow: hidden;
   white-space: nowrap;
 }
-.unhighlighted:hover {
-  background-color: #333333;
-}
-.highlighted {
-  background-color: #444444;
-}
 @media (min-width: 544px) {
   .name {
     font-size: 1.2rem;
@@ -98,9 +89,6 @@ export default {
 }
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) {
-  .desktop {
-    display: unset;
-  }
   .name, .map, .players, .addr {
     text-align: left;    
   }

@@ -4,7 +4,7 @@
     <navbar />
     <div class="container">
       <div class="row">
-        <servers />
+        <servers class="col" />
       </div>
     </div>
   </div>

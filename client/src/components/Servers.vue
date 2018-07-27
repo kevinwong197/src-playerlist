@@ -1,6 +1,6 @@
 <template>
   <div class="serverlist">
-    <server class="mt-4" v-if="filteredServers().length > 0" v-for="(server, i) in filteredServers()" v-bind:server="server" :key="i" />
+    <server class="my-4" v-if="filteredServers().length > 0" v-for="(server, i) in filteredServers()" v-bind:server="server" :key="i" />
     <div v-else-if="ok()">No Results</div>
     <progress-bar v-else-if="loading()" />
     <div v-else>{{status}}</div>
