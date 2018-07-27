@@ -62,10 +62,9 @@ export default {
       }
     },
     deselect (addr) {
-      if (addr === this.server.addr) {
-        return
+      if (addr !== this.server.addr) {
+        this.selected = false
       }
-      this.selected = false
     },
     unselected () {
       return !(this.selected)

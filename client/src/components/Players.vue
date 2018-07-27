@@ -6,7 +6,7 @@
     </div>
     <div v-else-if="ok()">Empty</div>
     <progress-bar v-else-if="loading()" />
-    <spinner v-else-if="none()">{{getplayers()}}</spinner>
+    <spinner v-else-if="none()" />
     <div v-else-if="!ok()">{{status}}</div>
   </div>
 </template>
