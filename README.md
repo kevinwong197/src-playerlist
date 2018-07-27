@@ -25,7 +25,7 @@ npm run dev
 bundle exec rake server:dev
 ```
 
-## Todo
+## Todo (someday)
 - sorting
 - server name search
 - regex support for search
