@@ -29,5 +29,4 @@ bundle exec rake server:dev
 - server name search
 - regex support for search
 - use A2S info for currently visible servers as a workaround for the masterserver's playercount inconsistency (info refresh button)
-- less short circuiting
 - custom dirname inputbox (with :to="'/' + dirname")
