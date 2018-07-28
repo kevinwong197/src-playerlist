@@ -36,7 +36,9 @@ export default {
   },
   mounted () {
     this.parent.scrollIntoView({ 
-      behavior: 'smooth'
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'center'
     });
   },
   beforeDestroy (){
