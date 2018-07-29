@@ -8,7 +8,7 @@
       <b-badge :variant="selected ? 'light' : 'dark'" class="d-none d-md-inline-block">
         {{server.players}}/{{server.max_players}}
       </b-badge>
-      <h5 class="d-block d-md-inline-block font-weight-bold border-bottom border-primary">{{server.name}}</h5>
+      <h5 class="d-block d-md-inline-block font-weight-bold servertitle">{{server.name}}</h5>
       <b-badge :variant="selected ? 'light' : 'dark'" class="d-md-none">
         {{server.players}}/{{server.max_players}}
       </b-badge>
@@ -84,5 +84,10 @@ export default {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;    
+}
+.servertitle {
+  border-bottom-width: 2px;
+  border-bottom-color: orange;
+  border-bottom-style: dashed;
 }
 </style>
