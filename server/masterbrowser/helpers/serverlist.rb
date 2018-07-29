@@ -76,15 +76,15 @@ class Serverlist
 
   def query
     return {status: "Error: STEAM_API_KEY not defined"} unless ENV['STEAM_API_KEY']
-    start do |http|
-      # response = http.get(api_call)
-      str = Curl.get(api_call).body_str
-      if ok?(response)
-        return {status: 'OK', servers: read_servers(str)}
-      else
-        return {status: "Error: #{response.code} #{response.message}"}
-      end
-    end
+    # start do |http|
+    # response = http.get(api_call)
+    str = Curl.get(api_call).body_str
+    # if ok?(response)
+    return {status: 'OK', servers: read_servers(str)}
+    # else
+    #   return {status: "Error: #{response.code} #{response.message}"}
+    # end
+    # end
   rescue Exception => e # SocketError, Net::OpenTimeout, Net::ReadTimeout
     {status: "Error: #{e.message}"}
   end
