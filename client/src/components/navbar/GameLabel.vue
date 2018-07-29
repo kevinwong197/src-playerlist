@@ -1,6 +1,6 @@
 <template>
   <b-navbar-brand>
-    <span class="desktop">MasterBrowser: </span>
+    <span class="d-none d-md-inline-block">MasterBrowser: </span>
     {{name}}
   </b-navbar-brand>
 </template>
