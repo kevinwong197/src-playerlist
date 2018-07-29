@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col">
           <server
-            class="shad sharpbox clickable my-md-2"
+            class="shad sharpbox clickable"
             v-for="(server, i) in filteredServers()"
             :server="server"
             :key="i" />

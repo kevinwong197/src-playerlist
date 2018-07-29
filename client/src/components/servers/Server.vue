@@ -4,16 +4,20 @@
       @click="select"
       :bg-variant="selected ? 'dark' : null"
       header-text-variant="white"
-      :header-bg-variant="server.dedicated ? 'primary' : 'secondary'"
-      :title="server.name">
-      <p class="card-text mb-0 mb-md-3">
-        <b-badge :variant="selected ? 'light' : 'dark'">
-          {{server.players}}/{{server.max_players}}
-        </b-badge>
+      :header-bg-variant="server.dedicated ? 'primary' : 'secondary'">
+      <b-badge :variant="selected ? 'light' : 'dark'" class="d-none d-md-inline-block">
+        {{server.players}}/{{server.max_players}}
+      </b-badge>
+      <h5 class="d-block d-md-inline-block">{{server.name}}</h5>
+      <b-badge :variant="selected ? 'light' : 'dark'" class="d-md-none">
+        {{server.players}}/{{server.max_players}}
+      </b-badge>
+      <p class="card-text mb-0 mb-md-2 d-inline-block float-none float-md-right" >
         {{server.map}}
       </p>
-      <div class="desktop" @click.stop>
-        <b-btn
+      <span class="clearfix"/>
+      <div class="d-none d-md-block" @click.stop>
+        <b-btn size="md"
           class="d-block"
           :href="steamproto(server.addr)"
           :variant="server.dedicated ? 'success' : 'secondary'"
@@ -80,13 +84,5 @@ export default {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;    
-}
-.desktop {
-  display: none;
-}
-@media (min-width: 768px) {
-  .desktop {
-    display: unset;
-  }
 }
 </style>
