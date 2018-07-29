@@ -47,7 +47,7 @@
         <b-nav-item href="#" v-b-modal.options>Options</b-nav-item>
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
-        <refresh-button class="d-block" size="sm">Refresh</refresh-button>
+        <refresh-button class="d-block" size="xs">Refresh</refresh-button>
       </b-navbar-nav>
     </b-collapse>
   </b-navbar>
