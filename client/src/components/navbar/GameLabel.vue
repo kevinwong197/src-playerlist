@@ -1,5 +1,5 @@
 <template>
-  <b-navbar-brand @click="search" class="btn btn-outline-light nohighlight">
+  <b-navbar-brand @click="search" class="btn btn-primary">
     <span class="d-none d-md-inline-block">MasterBrowser:</span>
     <span>{{name}}</span>
   </b-navbar-brand>
