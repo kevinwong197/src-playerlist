@@ -1,5 +1,6 @@
 require 'json'
-require 'net/http'
+# require 'net/http'
+require 'curb'
 require 'uri'
 require 'pp'
 
@@ -76,9 +77,10 @@ class Serverlist
   def query
     return {status: "Error: STEAM_API_KEY not defined"} unless ENV['STEAM_API_KEY']
     start do |http|
-      response = http.get(api_call)
+      # response = http.get(api_call)
+      str = Curl.get(api_call).body_str
       if ok?(response)
-        return {status: 'OK', servers: read_servers(response.body)}
+        return {status: 'OK', servers: read_servers(str)}
       else
         return {status: "Error: #{response.code} #{response.message}"}
       end
