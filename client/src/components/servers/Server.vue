@@ -8,7 +8,7 @@
       <b-badge :variant="selected ? 'light' : 'dark'" class="d-none d-md-inline-block">
         {{server.players}}/{{server.max_players}}
       </b-badge>
-      <h5 class="d-block d-md-inline-block">{{server.name}}</h5>
+      <h5 class="d-block d-md-inline-block font-weight-bold border-bottom border-primary">{{server.name}}</h5>
       <b-badge :variant="selected ? 'light' : 'dark'" class="d-md-none">
         {{server.players}}/{{server.max_players}}
       </b-badge>
@@ -20,7 +20,7 @@
         <b-btn size="md"
           class="d-block"
           :href="steamproto(server.addr)"
-          :variant="server.dedicated ? 'success' : 'secondary'"
+          :variant="server.dedicated ? 'primary' : 'secondary'"
           :class="{disabled: !server.dedicated}">
           <small>{{server.dedicated ? '↪' : ''}} {{server.addr}}</small>
         </b-btn>

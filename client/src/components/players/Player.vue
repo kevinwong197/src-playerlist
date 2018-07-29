@@ -1,5 +1,5 @@
 <template>
-  <div class="row py-3 py-md-1" @click="searchSteam">
+  <div class="row py-3 py-md-1 font-weight-bold" @click="searchSteam">
     <div class="name col-12 col-xs-8">{{player.name}}</div>
     <div class="score col-6 col-xs-2">{{player.score}}</div>
     <div class="time col-6 col-xs-2">{{player.time}}</div>
