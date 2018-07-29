@@ -1,5 +1,5 @@
 <template>
-  <b-navbar class="text-left" toggleable="md" variant="primary" type="dark" sticky>
+  <b-navbar class="text-center" toggleable="md" variant="primary" type="dark" sticky>
     <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
     <game-label />
     <b-collapse is-nav id="nav_collapse">

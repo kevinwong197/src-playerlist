@@ -1,5 +1,5 @@
 <template>
-  <b-button data-toggle="collapse" @click="search">
+  <b-button variant="outline-light" @click="search">
     <slot></slot>
   </b-button>
 </template>
