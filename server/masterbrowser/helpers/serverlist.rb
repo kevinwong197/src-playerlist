@@ -78,7 +78,7 @@ class Serverlist
     return {status: "Error: STEAM_API_KEY not defined"} unless ENV['STEAM_API_KEY']
     # start do |http|
     # response = http.get(api_call)
-    str = Curl.get(api_call).body_str
+    str = Curl.get(full_url).body_str
     # if ok?(response)
     return {status: 'OK', servers: read_servers(str)}
     # else
