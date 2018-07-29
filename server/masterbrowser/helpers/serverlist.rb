@@ -45,19 +45,15 @@ class Serverlist
   end
 
   def timeout_config
-    [open_timeout: 1, read_timeout: ENV['GET_SERVERS_TIMEOUT']&.to_i || 5]
+    [write: 1, connect: 1, :read => ENV['GET_SERVERS_TIMEOUT']&.to_i || 5]
   end
 
   def ok? response
-    response.code == '200'
+    response.code == 200
   end
 
   def clean_utf8 txt
     txt.encode('UTF-8', 'UTF-8', invalid: :replace, undef: :replace)
-  end
-
-  def start &block
-    Net::HTTP.start(hostname, *timeout_config, &block)
   end
 
   def json2servers json
@@ -76,9 +72,12 @@ class Serverlist
 
   def query
     return {status: "Error: STEAM_API_KEY not defined"} unless ENV['STEAM_API_KEY']
-    start do |http|
-      body = HTTP.get(full_url).to_s
-      return {status: 'OK', servers: read_servers(body)}
+    response = HTTP.timeout(*timeout_config)
+      .get(full_url)
+    if ok?(response)
+      return {status: 'OK', servers: read_servers(response.to_s)}
+    else
+      return {status: "Error: #{response.code} #{response.reason}"}
     end
   rescue Exception => e # SocketError, Net::OpenTimeout, Net::ReadTimeout
     {status: "Error: #{e.message}"}
