@@ -1,6 +1,7 @@
 <template>
     <b-card
       class="text-left nohighlight"
+      :class="selected ? 'dropped' : null"
       @click="select"
       :bg-variant="selected ? 'dark' : null"
       header-text-variant="white"
@@ -89,10 +90,13 @@ export default {
 .selected {
   border-bottom-width: 2px;
   border-bottom-color: orange;
-  border-bottom-style: dashed;
+  border-bottom-style: solid;
 }
 .unselected {
   border-bottom-width: 2px;
-  border-bottom-style: dashed;
+  border-bottom-style: solid;
+}
+.dropped {
+  box-shadow: inset -2px -3px 78px -4px rgba(0,0,0,0.93);
 }
 </style>

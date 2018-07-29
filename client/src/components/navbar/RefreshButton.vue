@@ -1,5 +1,5 @@
 <template>
-  <b-button variant="outline-light" @click="search">
+  <b-button variant="dark" @click="search">
     <slot></slot>
   </b-button>
 </template>

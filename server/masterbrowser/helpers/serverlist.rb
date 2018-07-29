@@ -1,5 +1,4 @@
 require 'json'
-require 'net/http'
 require 'http'
 require 'uri'
 require 'pp'
@@ -79,7 +78,7 @@ class Serverlist
     else
       return {status: "Error: #{response.code} #{response.reason}"}
     end
-  rescue Exception => e # SocketError, Net::OpenTimeout, Net::ReadTimeout
+  rescue Exception => e
     {status: "Error: #{e.message}"}
   end
 
