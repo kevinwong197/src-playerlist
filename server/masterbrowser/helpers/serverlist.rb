@@ -47,10 +47,6 @@ class Serverlist
     [write: 1, connect: 1, :read => ENV['GET_SERVERS_TIMEOUT']&.to_i || 5]
   end
 
-  def ok? response
-    response.code == 200
-  end
-
   def clean_utf8 txt
     txt.encode('UTF-8', 'UTF-8', invalid: :replace, undef: :replace)
   end
@@ -73,7 +69,7 @@ class Serverlist
     return {status: "Error: STEAM_API_KEY not defined"} unless ENV['STEAM_API_KEY']
     response = HTTP.timeout(*timeout_config)
       .get(full_url)
-    if ok?(response)
+    if response.status.ok?
       return {status: 'OK', servers: read_servers(response.to_s)}
     else
       return {status: "Error: #{response.code} #{response.reason}"}
