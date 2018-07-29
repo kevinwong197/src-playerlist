@@ -11,7 +11,7 @@ class Serverlist
     @gamedir = gamedir
   end
 
-  def querystr key: ENV['STEAM_API_KEY'], limit: 10000
+  def querystr key: ENV['STEAM_API_KEY'], limit: 20000
     URI.encode_www_form({
       'key' => key,
       'filter' => "gamedir\\#{@gamedir}",
