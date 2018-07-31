@@ -1,14 +1,12 @@
 <template>
   <div class="serverlist">
-    <div class="container" v-if="filteredServers().length > 0">
-      <div class="row">
-        <div class="col">
-          <server
-            class="sharpbox clickable"
-            v-for="(server, i) in filteredServers()"
-            :server="server"
-            :key="i" />
-        </div>
+    <div v-if="filteredServers().length > 0">
+      <div class="container">
+        <server
+          class="sharpbox clickable"
+          v-for="(server, i) in filteredServers()"
+          :server="server"
+          :key="i" />
       </div>
     </div>
     <b-card v-else-if="ok()">No Results</b-card>

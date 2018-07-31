@@ -1,32 +1,60 @@
 <template>
     <b-card
-      class="text-left nohighlight"
+      class="nohighlight"
       :class="selected ? 'dropped' : null"
       @click="select"
-      :bg-variant="selected ? 'dark' : null"
-      header-text-variant="white"
-      :header-bg-variant="server.dedicated ? 'primary' : 'secondary'">
-      <b-badge :variant="selected ? 'light' : 'dark'" class="d-none d-md-inline-block">
-        {{server.players}}/{{server.max_players}}
-      </b-badge>
-      <h5 class="d-block d-md-inline-block font-weight-bold"
-        :class="selected ? 'selected' : 'unselected'">{{server.name}}</h5>
-      <b-badge :variant="selected ? 'light' : 'dark'" class="d-md-none">
-        {{server.players}}/{{server.max_players}}
-      </b-badge>
-      <p class="card-text mb-0 mb-md-2 d-inline-block float-none float-md-right">
-        {{server.map}}
-      </p>
-      <span class="clearfix"/>
-      <div class="d-none d-md-block" @click.stop>
-        <b-btn size="md"
-          class="d-block"
-          :href="steamproto(server.addr)"
-          :variant="server.dedicated ? 'primary' : 'secondary'"
-          :class="{disabled: !server.dedicated}">
-          <small>{{server.dedicated ? '↪' : ''}} {{server.addr}}</small>
-        </b-btn>
+      :bg-variant="selected ? 'dark' : null">
+<!-- justify-content-md-left -->
+
+
+
+
+      <div class="row mb-0">
+        <div class="col-6 col-md-auto d-md-none text-left">
+          <small
+            :class="selected ? 'text-white' : 'text-dark'"
+            class="w-100 bg-transparent text-truncate border-0">
+            {{server.map}}
+          </small>
+        </div>
+        <div class="col-6 d-md-none text-right">
+          <small
+            :class="selected ? 'text-white' : 'text-dark'"
+            class="w-100 bg-transparent border-0 text-white">
+            {{server.players}}/{{server.max_players}}
+          </small>
+        </div>
+
+
+        <div class="col-md-auto d-none d-md-flex cnt">
+          <b-input-group-text
+            :class="selected ? 'text-white' : 'text-dark'"
+            class="w-100 bg-transparent border-0 text-white cntdesktop">
+            {{server.players}}/{{server.max_players}}
+          </b-input-group-text>
+        </div>
+        <div class="col-md text-nowrap text-truncate">
+          <b-input-group-text
+            class="w-100 text-dark text-truncate">
+            {{server.name}}
+          </b-input-group-text>
+        </div>
+        <div class="col-6 d-none d-md-flex col-md-auto">
+          <b-input-group-text
+            :class="selected ? 'text-white' : 'text-dark'"
+            class="w-100 bg-transparent text-truncate border-0">
+            {{server.map}}
+          </b-input-group-text>
+        </div>
+        <div class="col-md-auto d-none d-md-flex addr">
+          <b-btn class="w-100 bg-success text-white addrdesktop">
+            {{server.dedicated ? '↪' : ''}}{{server.addr}}
+          </b-btn>
+        </div>
+
+
       </div>
+
       <span @click.stop>
         <players
           v-if="selected"
@@ -98,5 +126,16 @@ export default {
 }
 .dropped {
   box-shadow: inset -2px -3px 78px -4px rgba(0,0,0,0.93);
+}
+.card-body {
+  padding: 0.5rem;
+}
+.addrdesktop {
+  max-width: 13rem;
+  min-width: 13rem;
+}
+.cntdesktop {
+  max-width: 3rem;
+  min-width: 3rem;
 }
 </style>
