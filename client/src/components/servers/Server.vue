@@ -33,10 +33,10 @@
           </b-btn>
         </div>
 
-        <div class="col-6 d-md-none text-left">
+        <div class="col d-md-none text-left">
           {{server.map}}
         </div>
-        <div class="col-6 d-md-none text-right">
+        <div class="col-auto d-md-none text-right">
           <b-badge
             :variant="selected ? 'light' : 'dark'">
             {{server.players}}/{{server.max_players}}
