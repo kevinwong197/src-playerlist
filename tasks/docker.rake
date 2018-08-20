@@ -11,6 +11,6 @@ namespace :docker do
 
   desc 'run docker image'
   task :run do
-    sh 'docker run --rm --env-file ./.env -p 3000:3000 -i -t src-playerlist'
+    sh 'docker run --rm --env-file .env -p 3000:3000 -i -t src-playerlist'
   end
 end
