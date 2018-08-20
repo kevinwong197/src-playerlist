@@ -1,9 +1,9 @@
-require_relative 'server/masterbrowser'
+require_relative 'lib/masterbrowser'
 
 if ENV["RACK_ENV"] == 'production'
-  use Rack::Static, :urls => {'/' => 'index.html'}, :root => 'client/dist'
+  use Rack::Static, :urls => {'/' => 'index.html'}, :root => 'frontend/dist'
   run Rack::URLMap.new({
-    '/'    => Rack::Directory.new('client/dist'),
+    '/'    => Rack::Directory.new('frontend/dist'),
     '/api' => MasterBrowser
   })
 elsif ENV["RACK_ENV"] == 'development'

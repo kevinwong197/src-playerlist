@@ -1,0 +1,6 @@
+.git
+.bundle
+vendor
+*.md
+.env
+frontend/node_modules
