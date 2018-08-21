@@ -15,7 +15,8 @@ RUN buildDeps='build-essential ruby-dev nodejs npm' \
   && cd /app \
   && bundle install --path vendor/bundle \
   && apt-get purge -y --auto-remove $buildDeps \
-  && rm -rf /var/lib/apt/lists/*
+  && rm -rf /var/lib/apt/lists/* \
+  && rm -rf /app/frontend/node_modules
 
 WORKDIR /app
 CMD bundle exec puma -C puma.rb
