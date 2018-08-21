@@ -1,22 +1,23 @@
-FROM ubuntu:latest
+FROM alpine:latest
 
-COPY . /app
+COPY Gemfile config.ru puma.rb /app/
+COPY frontend /app/frontend
+COPY lib /app/lib
 
-RUN buildDeps='build-essential ruby-dev nodejs npm' \
-  && runDeps='ruby' \
-  && set -x \
-  && apt-get update \
-  && apt-get install -y $runDeps --no-install-recommends \
-  && apt-get install -y $buildDeps --no-install-recommends \
-  && gem install bundler \
+RUN set -x \
+  && buildDeps='build-base ruby-dev nodejs nodejs-npm' \
+  && runDeps='ruby ruby-json ruby-bundler libstdc++ tzdata bash ca-certificates' \
+  && apk add --no-cache $runDeps \
+  && apk add --no-cache $buildDeps \
+  && echo 'gem: --no-document' > /etc/gemrc \
   && cd /app/frontend \
-  && npm i \
+  && npm install \
   && npm run build \
+  && find . -maxdepth 1 ! -mindepth 1 -iname dist -exec rm -r {} \; \
   && cd /app \
   && bundle install --path vendor/bundle \
-  && apt-get purge -y --auto-remove $buildDeps \
-  && rm -rf /var/lib/apt/lists/* \
-  && rm -rf /app/frontend/node_modules
+  && apk del $buildDeps \
+  && rm -rf /tmp/* /var/tmp/* /var/cache/apk/*
 
 WORKDIR /app
 CMD bundle exec puma -C puma.rb
